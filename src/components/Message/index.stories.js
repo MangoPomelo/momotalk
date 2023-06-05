@@ -8,6 +8,7 @@ export default {
     avatar: '/images/character/Sensei.png',
     name: 'sensei',
     content: 'hello world',
+    fromMe: false,
   },
 };
 
