@@ -11,26 +11,23 @@ export default {
   },
 };
 
-export const LongSent = {
+export const Primary = {
   args: {
     primary: true,
-    mode: 'sent',
   },
 };
 
-export const ShortSent = {
-  args: {
-    mode: 'sent',
-  },
-};
+export const Following = {};
 
-export const LongReceived = {
+export const PrimaryFromMe = {
   args: {
     primary: true,
-    mode: 'received',
+    fromMe: true,
   },
 };
 
-export const ShortReceived = {
-  mode: 'received',
+export const FollowingFromMe = {
+  args: {
+    fromMe: true,
+  },
 };

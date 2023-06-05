@@ -19,14 +19,14 @@ Message.propTypes = {
   content: PropTypes.string,
 
   /**
-   * Size of the message which is whether "long" or "short"
+   * Size of the message which is whether "detailed" or "concise"
    */
-  primary: PropTypes.oneOf(['long', 'short']),
+  primary: PropTypes.bool,
 
   /**
-   * Mode of the message which is whether "sent" or "received"
+   * Mode of the message which is whether "from me" or not
    */
-  mode: PropTypes.oneOf(['sent', 'received']),
+  fromMe: PropTypes.bool,
 };
 
 Message.defaultProps = {
@@ -34,7 +34,7 @@ Message.defaultProps = {
   name: 'sensei',
   content: 'Konnichiwa',
   primary: false,
-  mode: 'sent',
+  fromMe: false,
 };
 
 /**
@@ -44,7 +44,7 @@ Message.defaultProps = {
  *  name: string,
  *  content: string,
  *  primary: boolean,
- *  mode: ('sent' | 'received'),
+ *  fromMe: boolean,
  * }} props Properties <br/>
  * @return {JSX.Element} Message component <br/>
  */
@@ -52,14 +52,14 @@ export function Message({
   avatar,
   name,
   content,
-  mode,
   primary,
+  fromMe,
 }) {
   return (
-    <li>
-      <img src={avatar} alt={name}/>
-      <span>{name}</span>
-      <span>{content}</span>
+    <li className={['message', primary && 'message--primary', fromMe && 'message--from-me'].join(' ')}>
+      <img className="message__avatar" src={avatar} alt={name}/>
+      <span className="message__name">{name}</span>
+      <span className="message__content">{content}</span>
     </li>
   );
 }

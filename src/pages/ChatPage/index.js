@@ -28,7 +28,8 @@ export function ChatPage() {
                 avatar={`/images/character/${sender}.png`}
                 name={sender}
                 content={msg}
-                mode={sender.toLowerCase() === 'sensei'}
+                primary
+                fromMe={sender.toLowerCase() === 'sensei'}
               />
             ))
         }

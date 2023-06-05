@@ -6,7 +6,7 @@ export default {
   title: 'Components/MessageList',
   component: MessageList,
   parameters: {
-    layout: 'centered',
+    layout: 'fullscreen',
   },
   argTypes: {
     children: {
@@ -17,26 +17,24 @@ export default {
           name='sensei'
           content='Hello~!'
           primary
-          mode='sent'
+          fromMe
         />,
         Message2: <Message
           avatar='/images/character/Sensei.png'
           name='sensei'
           content='How are you?'
-          mode='sent'
+          fromMe
         />,
         Message3: <Message
           avatar='/images/character/Alice.png'
           name='alice'
           content='Fine, thanks!'
           primary
-          mode='received'
         />,
         Message4: <Message
           avatar='/images/character/Alice.png'
           name='alice'
           content='How is it going?'
-          mode='received'
         />,
       },
       control: {
