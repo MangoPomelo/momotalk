@@ -23,5 +23,5 @@ MessageList.defaultProps = {
 export function MessageList({
   children,
 }) {
-  return <ul>{children}</ul>;
+  return <ul className="message-list">{children}</ul>;
 }
