@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
-import { Character } from '../../class/character';
+import { CharacterData } from '../../class/characterData';
 
 Message.propTypes = {
   /**
-   * Character of the message sender
+   * CharacterData of the message sender
    */
   character: PropTypes.shape({
     name: PropTypes.string,
@@ -29,7 +29,7 @@ Message.propTypes = {
 };
 
 Message.defaultProps = {
-  character: new Character('sensei', '/images/character/Sensei.png'),
+  character: new CharacterData('sensei', '/images/character/Sensei.png'),
   content: 'Konnichiwa',
   primary: false,
   fromMe: false,
@@ -38,7 +38,7 @@ Message.defaultProps = {
 /**
  * Message component <br/>
  * @param {{
- *  character: Character,
+ *  character: CharacterData,
  *  content: string,
  *  primary: boolean,
  *  fromMe: boolean,

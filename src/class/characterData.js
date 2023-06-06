@@ -1,7 +1,7 @@
 /**
  * Character DTO
  */
-export class Character {
+export class CharacterData {
   /**
    * Constructor function
    * @param {string} name The name of the character

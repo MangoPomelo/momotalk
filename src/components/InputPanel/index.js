@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
-import { Character } from '../../class/character';
+import { CharacterData } from '../../class/characterData';
 
 InputPanel.propTypes = {
   /**
@@ -20,8 +20,8 @@ InputPanel.propTypes = {
 
 InputPanel.defaultProps = {
   candidates: [
-    new Character('alice', '/images/character/Alice.png'),
-    new Character('sensei', '/images/character/Sensei.png'),
+    new CharacterData('alice', '/images/character/Alice.png'),
+    new CharacterData('sensei', '/images/character/Sensei.png'),
   ],
   onSubmit: () => {},
 };
@@ -38,14 +38,14 @@ InputPanel.defaultProps = {
 /**
  * InputPanel component <br/>
  * @param {{
- *  candidates: Character[],
+ *  candidates: CharacterData[],
  *  onSubmit: onSubmit,
  * }} props Properties <br/>
  * @return {JSX.Element} InputPanel component <br/>
  */
 export function InputPanel({ candidates, onSubmit }) {
   const [message, setMessage] = useState('');
-  const [selectedCharacter, setSelectedCharacter] = useState(candidates[0] ?? new Character('', ''));
+  const [selectedCharacter, setSelectedCharacter] = useState(candidates[0] ?? new CharacterData('', ''));
 
   const onInputTextChange = useCallback((event) => {
     setMessage(event.target.value);
@@ -100,7 +100,7 @@ Candidate.propTypes = {
 /**
  * Candidate component <br/>
  * @param {{
- *  character: Character,
+ *  character: CharacterData,
  *  checked: boolean,
  *  onChange: onChange,
  * }} props Properties <br/>

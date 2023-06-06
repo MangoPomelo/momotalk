@@ -3,7 +3,7 @@ import './index.css';
 import { InputPanel } from '../../components/InputPanel';
 import { MessageList } from '../../components/MessageList';
 import { Message } from '../../components/Message';
-import { Character } from '../../class/character';
+import { CharacterData } from '../../class/characterData';
 
 /**
  * ChatPage component <br/>
@@ -26,7 +26,7 @@ export function ChatPage() {
             .map(([msg, sender]) => (
               <Message
                 key={msg.message}
-                character={new Character(sender.name, `/images/character/${sender.name}.png`)}
+                character={new CharacterData(sender.name, `/images/character/${sender.name}.png`)}
                 content={msg}
                 primary
                 fromMe={sender.name.toLowerCase() === 'sensei'}
