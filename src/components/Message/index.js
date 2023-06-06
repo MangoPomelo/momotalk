@@ -1,17 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
+import { Character } from '../../class/character';
 
 Message.propTypes = {
   /**
-   * Avatar of the message sender
+   * Character of the message sender
    */
-  avatar: PropTypes.string,
-
-  /**
-   * Name of the message sender
-   */
-  name: PropTypes.string,
+  character: PropTypes.exact({
+    name: PropTypes.string,
+    avatar: PropTypes.string,
+  }),
 
   /**
    * Content of the message
@@ -30,8 +29,7 @@ Message.propTypes = {
 };
 
 Message.defaultProps = {
-  avatar: '/images/character/Sensei.png',
-  name: 'sensei',
+  character: new Character('sensei', '/images/character/Sensei.png'),
   content: 'Konnichiwa',
   primary: false,
   fromMe: false,
@@ -40,8 +38,7 @@ Message.defaultProps = {
 /**
  * Message component <br/>
  * @param {{
- *  avatar: string,
- *  name: string,
+ *  character: Character,
  *  content: string,
  *  primary: boolean,
  *  fromMe: boolean,
@@ -49,16 +46,15 @@ Message.defaultProps = {
  * @return {JSX.Element} Message component <br/>
  */
 export function Message({
-  avatar,
-  name,
+  character,
   content,
   primary,
   fromMe,
 }) {
   return (
     <li className={['message', primary && 'message--primary', fromMe && 'message--from-me'].join(' ')}>
-      <img className="message__avatar" src={avatar} alt={name}/>
-      <span className="message__name">{name}</span>
+      <img className="message__avatar" src={character.avatar} alt={character.name}/>
+      <span className="message__name">{character.name}</span>
       <span className="message__content">{content}</span>
     </li>
   );

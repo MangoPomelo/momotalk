@@ -1,12 +1,12 @@
 import { Message } from '.';
+import { Character } from '../../class/character';
 
 export default {
   title: 'Components/Message',
   component: Message,
   tags: ['autodocs'],
   args: {
-    avatar: '/images/character/Sensei.png',
-    name: 'sensei',
+    character: new Character('Sensei', '/images/character/Sensei.png'),
     content: 'hello world',
     fromMe: false,
   },
