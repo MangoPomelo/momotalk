@@ -2,7 +2,6 @@
   display: grid;
   grid-template-rows: auto;
   grid-auto-rows: auto;
-  grid-template-columns: 64px auto 64px;
   grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
   justify-items: center;
   align-items: center;
