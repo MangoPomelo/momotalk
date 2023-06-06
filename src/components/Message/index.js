@@ -10,6 +10,8 @@ Message.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     avatar: PropTypes.string,
+    club: PropTypes.string,
+    school: PropTypes.string,
   }).isRequired,
 
   /**
