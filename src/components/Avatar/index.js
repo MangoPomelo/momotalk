@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
-import { CharacterData } from '../../classes/characterData';
 
 Avatar.propTypes = {
   /**
@@ -11,7 +10,7 @@ Avatar.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     avatar: PropTypes.string,
-  }),
+  }).isRequired,
 
   /**
    * Sizes of the Avatar
@@ -20,7 +19,6 @@ Avatar.propTypes = {
 };
 
 Avatar.defaultProps = {
-  character: new CharacterData('sensei', '/images/character/Sensei.png'),
   size: 'medium',
 };
 
