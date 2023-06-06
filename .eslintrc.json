@@ -17,6 +17,7 @@
     ],
     "rules": {
         "max-len": "off",
-        "object-curly-spacing": ["error", "always"]
+        "object-curly-spacing": ["error", "always"],
+        "linebreak-style": "off"
     }
 }
