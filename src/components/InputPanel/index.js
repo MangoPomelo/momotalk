@@ -8,6 +8,7 @@ InputPanel.propTypes = {
    * The characters that can be selected for chatting
    */
   candidates: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
     name: PropTypes.string,
     avatar: PropTypes.string,
   })),
@@ -66,7 +67,7 @@ export function InputPanel({ candidates, onSubmit }) {
     <form onSubmit={onFormSubmit}>
       <input type="text" id="inputPanel" name="message" value={message} onChange={onInputTextChange} />
       <input type="submit" value="submit" disabled={message.length <= 0} />
-      {candidates.map((c) => <Candidate key={c.name} character={c} checked={selectedCharacter.name === c.name} onChange={onInputRadioChange}/>)}
+      {candidates.map((c) => <Candidate key={c.name} character={c} checked={selectedCharacter.id === c.id} onChange={onInputRadioChange}/>)}
     </form>
   );
 }
@@ -76,6 +77,7 @@ Candidate.propTypes = {
    * The character
    */
   character: PropTypes.shape({
+    id: PropTypes.string,
     name: PropTypes.string,
     avatar: PropTypes.string,
   }).isRequired,

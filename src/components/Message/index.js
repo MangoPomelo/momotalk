@@ -8,6 +8,7 @@ Message.propTypes = {
    * CharacterData of the message sender
    */
   character: PropTypes.shape({
+    id: PropTypes.string,
     name: PropTypes.string,
     avatar: PropTypes.string,
   }),

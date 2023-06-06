@@ -8,6 +8,7 @@ export class CharacterData {
    * @param {string} avatar The avatar of the character
    */
   constructor(name, avatar) {
+    this.id = `${name}|${avatar}`;
     this.name = name;
     this.avatar = avatar;
   }
