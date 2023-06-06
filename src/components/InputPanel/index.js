@@ -2,6 +2,7 @@ import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
 import { CharacterData } from '../../classes/characterData';
+import { Avatar } from '../Avatar';
 
 InputPanel.propTypes = {
   /**
@@ -22,6 +23,7 @@ InputPanel.propTypes = {
 InputPanel.defaultProps = {
   candidates: [
     new CharacterData('alice', '/images/character/Alice.png'),
+    new CharacterData('yuzu', '/images/character/Yuzu.png'),
     new CharacterData('sensei', '/images/character/Sensei.png'),
   ],
   onSubmit: () => {},
@@ -64,7 +66,7 @@ export function InputPanel({ candidates, onSubmit }) {
   }, [message, selectedCharacter]);
 
   return (
-    <form onSubmit={onFormSubmit}>
+    <form className="input-panel" onSubmit={onFormSubmit}>
       <input className="input-panel__input" placeholder="Aa" type="text" id="inputPanel" name="message" value={message} onChange={onInputTextChange} />
       <input className="input-panel__submit" type="submit" value="submit" disabled={message.length <= 0} />
       {candidates.map((c) => <Candidate key={c.name} character={c} checked={selectedCharacter.id === c.id} onChange={onInputRadioChange}/>)}
@@ -113,8 +115,8 @@ function Candidate({ character, checked, onChange }) {
 
   return (
     <>
-      <input key={character.name} checked={checked} onChange={onChange} type="radio" name="character" id={character.name} value={serializedCharacter} />
-      <label htmlFor={character.name}>{character.name}</label>
+      <input className="input-panel__candidate-radio" checked={checked} onChange={onChange} type="radio" name="character" id={character.id} value={serializedCharacter} />
+      <label className="input-panel__candidate-avatar" htmlFor={character.id}><Avatar character={character} small/></label>
     </>
   );
 }

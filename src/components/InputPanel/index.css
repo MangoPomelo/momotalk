@@ -1,10 +1,29 @@
+.input-panel {
+  display: grid;
+  grid-template-rows: auto;
+  grid-auto-rows: auto;
+  grid-template-columns: 64px auto 64px;
+  grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
+  justify-items: center;
+  align-items: center;
+}
+
 .input-panel__input {
+  grid-column-start: 1;
+  grid-column-end: -2;
+  justify-self: stretch;
+  align-self: stretch;
   background-color: rgb(224, 224, 224);
   border-radius: 16px;
   font-size: 18px;
   padding: 3px 8px;
   border: 2px solid transparent;
   outline: none;
+}
+
+.input-panel__candidate-avatar:last-child {
+  grid-column-start: -2;
+  grid-column-end: -1;
 }
 
 .input-panel__input:focus-visible{
@@ -30,4 +49,30 @@
 .input-panel__submit:disabled {
   cursor: default;
   opacity: 0.25;
+}
+
+.input-panel__candidate-radio {
+  display: none;
+}
+
+.input-panel__candidate-avatar {
+  cursor: pointer;
+}
+
+.input-panel__candidate-radio:not(:checked) + .input-panel__candidate-avatar {
+  display: inline-block;
+  position: relative;
+  line-height: 1;
+}
+
+.input-panel__candidate-radio:not(:checked) + .input-panel__candidate-avatar::before{
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
 }

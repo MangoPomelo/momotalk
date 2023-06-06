@@ -13,6 +13,12 @@ export function ChatPage() {
   const [messageList, setMessageList] = useState([]);
   const [senderList, setSenderList] = useState([]);
 
+  const candidates = [
+    new CharacterData('alice', '/images/character/Alice.png'),
+    new CharacterData('yuzu', '/images/character/Yuzu.png'),
+    new CharacterData('sensei', '/images/character/Sensei.png'),
+  ];
+
   const onSubmit = useCallback((event, message, sender) => {
     setMessageList((messageList) => [...messageList, message]);
     setSenderList((senderList) => [...senderList, sender]);
@@ -34,7 +40,7 @@ export function ChatPage() {
             ))
         }
       </MessageList>
-      <InputPanel onSubmit={onSubmit}/>
+      <InputPanel onSubmit={onSubmit} candidates={candidates} />
     </>
   );
 }
