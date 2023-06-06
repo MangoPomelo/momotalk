@@ -6,6 +6,9 @@
   grid-template-columns: repeat(auto-fit, minmax(64px, 1fr));
   justify-items: center;
   align-items: center;
+  padding: 16px;
+  row-gap: 10px;
+  column-gap: 5px;
 }
 
 .input-panel__input {
