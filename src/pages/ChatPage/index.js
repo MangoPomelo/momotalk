@@ -29,7 +29,7 @@ export function ChatPage() {
                 character={new CharacterData(sender.name, `/images/character/${sender.name}.png`)}
                 content={msg}
                 primary
-                fromMe={sender.name.toLowerCase() === 'sensei'}
+                fromMe={isMe(sender)}
               />
             ))
         }
@@ -40,3 +40,13 @@ export function ChatPage() {
 }
 
 ChatPage.propTypes = {};
+
+
+/**
+ * Check if the character is "me"
+ * @param {CharacterData} char Given character
+ * @return {boolean} Check if the character is "me"
+ */
+function isMe(char) {
+  return char.name.toLowerCase() === 'sensei';
+}
