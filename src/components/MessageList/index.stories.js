@@ -42,7 +42,7 @@ export default {
         type: 'multi-select',
         labels: {
           Message1: 'Hello~!',
-          Message2: 'How are you??',
+          Message2: 'How are you?',
           Message3: 'Fine, thanks!',
           Message4: 'How is it going?',
         },
