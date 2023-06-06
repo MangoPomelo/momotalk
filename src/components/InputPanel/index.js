@@ -1,12 +1,16 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
+import { Character } from '../../class/character';
 
 InputPanel.propTypes = {
   /**
-   * The name of the candidates that can be selected for chatting
+   * The characters that can be selected for chatting
    */
-  candidates: PropTypes.arrayOf(PropTypes.string),
+  candidates: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string,
+    avatar: PropTypes.string,
+  })),
 
   /**
    * Callback to be called when the form is submitted
@@ -15,7 +19,10 @@ InputPanel.propTypes = {
 };
 
 InputPanel.defaultProps = {
-  candidates: ['Sensei', 'Alice'],
+  candidates: [
+    new Character('alice', '/images/character/Alice.png'),
+    new Character('sensei', '/images/character/Sensei.png'),
+  ],
   onSubmit: () => {},
 };
 
@@ -27,46 +34,51 @@ InputPanel.defaultProps = {
  * @param {string} sender The name of the sender
  */
 
+
 /**
  * InputPanel component <br/>
  * @param {{
- *  candidates: string[],
+ *  candidates: Character[],
  *  onSubmit: onSubmit,
  * }} props Properties <br/>
  * @return {JSX.Element} InputPanel component <br/>
  */
 export function InputPanel({ candidates, onSubmit }) {
   const [message, setMessage] = useState('');
-  const [selected, setSelected] = useState(candidates[0] ?? '');
+  const [selectedCharacter, setSelectedCharacter] = useState(candidates[0] ?? new Character('', ''));
 
   const onInputTextChange = useCallback((event) => {
     setMessage(event.target.value);
   }, []);
 
   const onInputRadioChange = useCallback((event) => {
-    setSelected(event.target.value);
+    const deserializedCharacter = JSON.parse(event.target.value);
+    setSelectedCharacter(deserializedCharacter);
   }, []);
 
   const onFormSubmit = useCallback((event) => {
     event.preventDefault();
-    onSubmit(event, message, selected);
+    onSubmit(event, message, selectedCharacter);
     setMessage('');
-  }, [message, selected]);
+  }, [message, selectedCharacter]);
 
   return (
     <form onSubmit={onFormSubmit}>
       <input type="text" id="inputPanel" name="message" value={message} onChange={onInputTextChange} />
       <input type="submit" value="submit" disabled={message.length <= 0} />
-      {candidates.map((c) => <Candidate key={c} characterName={c} checked={selected === c} onChange={onInputRadioChange}/>)}
+      {candidates.map((c) => <Candidate key={c.name} character={c} checked={selectedCharacter.name === c.name} onChange={onInputRadioChange}/>)}
     </form>
   );
 }
 
 Candidate.propTypes = {
   /**
-   * The name of the character
+   * The character
    */
-  characterName: PropTypes.string.isRequired,
+  character: PropTypes.shape({
+    name: PropTypes.string,
+    avatar: PropTypes.string,
+  }).isRequired,
 
   /**
    * Whether the character is selected or not
@@ -88,17 +100,19 @@ Candidate.propTypes = {
 /**
  * Candidate component <br/>
  * @param {{
- *  characterName: string,
+ *  character: Character,
  *  checked: boolean,
  *  onChange: onChange,
  * }} props Properties <br/>
  * @return {JSX.Element} Candidate component <br/>
  */
-function Candidate({ characterName, checked, onChange }) {
+function Candidate({ character, checked, onChange }) {
+  const serializedCharacter = JSON.stringify(character);
+
   return (
     <>
-      <input key={characterName} checked={checked} onChange={onChange} type="radio" name="character" id={characterName} value={characterName} />
-      <label htmlFor={characterName}>{characterName}</label>
+      <input key={character.name} checked={checked} onChange={onChange} type="radio" name="character" id={character.name} value={serializedCharacter} />
+      <label htmlFor={character.name}>{character.name}</label>
     </>
   );
 }

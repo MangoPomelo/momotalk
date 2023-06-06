@@ -7,7 +7,7 @@ Message.propTypes = {
   /**
    * Character of the message sender
    */
-  character: PropTypes.exact({
+  character: PropTypes.shape({
     name: PropTypes.string,
     avatar: PropTypes.string,
   }),
