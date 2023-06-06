@@ -1,0 +1,33 @@
+.input-panel__input {
+  background-color: rgb(224, 224, 224);
+  border-radius: 16px;
+  font-size: 18px;
+  padding: 3px 8px;
+  border: 2px solid transparent;
+  outline: none;
+}
+
+.input-panel__input:focus-visible{
+  border: 2px solid rgb(255, 179, 66);
+}
+
+.input-panel__submit {
+  cursor: pointer;
+  background-image: url('data:image/svg+xml;charset=utf-8,<svg type="submit" value="submit" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32"><path d="M56 8L44 52 28 38l15-17-21 15-14-4zM26 41v15l7-9z" fill="%234C5B70"></path></svg>');
+  background-color: transparent;
+  background-repeat: no-repeat;
+  color: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  transition: transform 50ms ease 0s;
+}
+
+.input-panel__submit:active {
+  transform: scale(0.95);
+}
+
+.input-panel__submit:disabled {
+  cursor: default;
+  opacity: 0.25;
+}

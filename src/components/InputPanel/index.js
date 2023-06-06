@@ -65,8 +65,8 @@ export function InputPanel({ candidates, onSubmit }) {
 
   return (
     <form onSubmit={onFormSubmit}>
-      <input type="text" id="inputPanel" name="message" value={message} onChange={onInputTextChange} />
-      <input type="submit" value="submit" disabled={message.length <= 0} />
+      <input className="input-panel__input" placeholder="Aa" type="text" id="inputPanel" name="message" value={message} onChange={onInputTextChange} />
+      <input className="input-panel__submit" type="submit" value="submit" disabled={message.length <= 0} />
       {candidates.map((c) => <Candidate key={c.name} character={c} checked={selectedCharacter.id === c.id} onChange={onInputRadioChange}/>)}
     </form>
   );
