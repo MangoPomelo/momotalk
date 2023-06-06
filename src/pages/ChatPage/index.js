@@ -39,4 +39,4 @@ export function ChatPage() {
   );
 }
 
-ChatPage.PropTypes = {};
+ChatPage.propTypes = {};
