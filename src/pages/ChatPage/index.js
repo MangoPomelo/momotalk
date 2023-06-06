@@ -34,7 +34,7 @@ export function ChatPage() {
             .map(([msg, sender, isPrimary]) => (
               <Message
                 key={msg.message}
-                character={sender}
+                sender={sender}
                 content={msg}
                 primary={isPrimary}
                 fromMe={isMe(sender)}
