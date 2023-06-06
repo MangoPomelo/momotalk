@@ -21,11 +21,7 @@ InputPanel.propTypes = {
 };
 
 InputPanel.defaultProps = {
-  candidates: [
-    new CharacterData('alice', '/images/character/Alice.png'),
-    new CharacterData('yuzu', '/images/character/Yuzu.png'),
-    new CharacterData('sensei', '/images/character/Sensei.png'),
-  ],
+  candidates: [],
   onSubmit: () => {},
 };
 
