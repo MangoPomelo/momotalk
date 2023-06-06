@@ -44,7 +44,7 @@ InputPanel.defaultProps = {
  */
 export function InputPanel({ candidates, onSubmit }) {
   const [message, setMessage] = useState('');
-  const [selectedCharacter, setSelectedCharacter] = useState(candidates[0] ?? new CharacterData('', ''));
+  const [selectedCharacter, setSelectedCharacter] = useState(candidates[0] ?? new CharacterData('', '', '', ''));
 
   const onInputTextChange = useCallback((event) => {
     setMessage(event.target.value);

@@ -14,9 +14,9 @@ export function ChatPage() {
   const [senderList, setSenderList] = useState([]);
 
   const candidates = [
-    new CharacterData('alice', '/images/character/Alice.png'),
-    new CharacterData('yuzu', '/images/character/Yuzu.png'),
-    new CharacterData('sensei', '/images/character/Sensei.png'),
+    new CharacterData('alice', '/images/character/Alice.png', 'game development development', '/images/emblem/millennium_science_academy.png'),
+    new CharacterData('yuzu', '/images/character/Yuzu.png', 'game development development', '/images/emblem/millennium_science_academy.png'),
+    new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png'),
   ];
 
   const onSubmit = useCallback((event, message, sender) => {
@@ -34,7 +34,7 @@ export function ChatPage() {
             .map(([msg, sender, isPrimary]) => (
               <Message
                 key={msg.message}
-                character={new CharacterData(sender.name, `/images/character/${sender.name}.png`)}
+                character={sender}
                 content={msg}
                 primary={isPrimary}
                 fromMe={isMe(sender)}

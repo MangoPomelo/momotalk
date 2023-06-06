@@ -10,9 +10,9 @@ export default {
 export const Default = {
   args: {
     candidates: [
-      new CharacterData('alice', '/images/character/Alice.png'),
-      new CharacterData('yuzu', '/images/character/Yuzu.png'),
-      new CharacterData('sensei', '/images/character/Sensei.png'),
+      new CharacterData('alice', '/images/character/Alice.png', 'game development development', '/images/emblem/millennium_science_academy.png'),
+      new CharacterData('yuzu', '/images/character/Yuzu.png', 'game development development', '/images/emblem/millennium_science_academy.png'),
+      new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png'),
     ],
   },
 };

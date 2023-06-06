@@ -15,26 +15,26 @@ export default {
       mapping: {
         Message1: <Message
           key="Message1"
-          character={new CharacterData('sensei', '/images/character/Sensei.png')}
+          character={new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png')}
           content='Hello~!'
           primary
           fromMe
         />,
         Message2: <Message
           key="Message2"
-          character={new CharacterData('sensei', '/images/character/Sensei.png')}
+          character={new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png')}
           content='How are you?'
           fromMe
         />,
         Message3: <Message
           key="Message3"
-          character={new CharacterData('alice', '/images/character/Alice.png')}
+          character={new CharacterData('alice', '/images/character/Alice.png', 'game development development', '/images/emblem/millennium_science_academy.png')}
           content='Fine, thanks!'
           primary
         />,
         Message4: <Message
           key="Message4"
-          character={new CharacterData('alice', '/images/character/Alice.png')}
+          character={new CharacterData('alice', '/images/character/Alice.png', 'game development development', '/images/emblem/millennium_science_academy.png')}
           content='How is it going?'
         />,
       },

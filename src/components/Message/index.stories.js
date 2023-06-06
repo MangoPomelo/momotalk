@@ -6,7 +6,7 @@ export default {
   component: Message,
   tags: ['autodocs'],
   args: {
-    character: new CharacterData('Sensei', '/images/character/Sensei.png'),
+    character: new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png'),
     content: 'hello world',
     fromMe: false,
   },
