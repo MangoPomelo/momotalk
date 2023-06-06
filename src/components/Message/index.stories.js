@@ -1,5 +1,5 @@
 import { Message } from '.';
-import { CharacterData } from '../../class/characterData';
+import { CharacterData } from '../../classes/characterData';
 
 export default {
   title: 'Components/Message',

@@ -3,7 +3,7 @@ import './index.css';
 import { InputPanel } from '../../components/InputPanel';
 import { MessageList } from '../../components/MessageList';
 import { Message } from '../../components/Message';
-import { CharacterData } from '../../class/characterData';
+import { CharacterData } from '../../classes/characterData';
 
 /**
  * ChatPage component <br/>

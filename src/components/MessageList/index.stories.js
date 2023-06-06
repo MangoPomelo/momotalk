@@ -1,5 +1,5 @@
 import { MessageList } from '.';
-import { CharacterData } from '../../class/characterData';
+import { CharacterData } from '../../classes/characterData';
 import { Message } from '../Message';
 import React from 'react';
 

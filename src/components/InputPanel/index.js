@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
-import { CharacterData } from '../../class/characterData';
+import { CharacterData } from '../../classes/characterData';
 
 InputPanel.propTypes = {
   /**
