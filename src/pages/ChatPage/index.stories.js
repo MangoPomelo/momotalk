@@ -1,7 +1,7 @@
 import { ChatPage } from '.';
 
 export default {
-  title: 'Components/ChatPage',
+  title: 'Pages/ChatPage',
   component: ChatPage,
   tags: ['autodocs'],
   parameters: {
