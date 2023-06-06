@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
-import { CharacterData } from '../../classes/characterData';
 
 Message.propTypes = {
   /**
@@ -11,12 +10,12 @@ Message.propTypes = {
     id: PropTypes.string,
     name: PropTypes.string,
     avatar: PropTypes.string,
-  }),
+  }).isRequired,
 
   /**
    * Content of the message
    */
-  content: PropTypes.string,
+  content: PropTypes.string.isRequired,
 
   /**
    * Size of the message which is whether "detailed" or "concise"
@@ -30,8 +29,6 @@ Message.propTypes = {
 };
 
 Message.defaultProps = {
-  character: new CharacterData('sensei', '/images/character/Sensei.png'),
-  content: 'Konnichiwa',
   primary: false,
   fromMe: false,
 };
