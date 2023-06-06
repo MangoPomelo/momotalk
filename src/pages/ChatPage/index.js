@@ -29,12 +29,14 @@ export function ChatPage() {
       <MessageList>
         {messageList
             .map((msg, idx) => [msg, senderList[idx]])
-            .map(([msg, sender]) => (
+            .map(([msg, sender], idx) => [msg, sender, senderList[idx - 1] ?? null])
+            .map(([msg, sender, previousSender]) => [msg, sender, isPrimarySender(sender, previousSender)])
+            .map(([msg, sender, isPrimary]) => (
               <Message
                 key={msg.message}
                 character={new CharacterData(sender.name, `/images/character/${sender.name}.png`)}
                 content={msg}
-                primary
+                primary={isPrimary}
                 fromMe={isMe(sender)}
               />
             ))
@@ -47,6 +49,19 @@ export function ChatPage() {
 
 ChatPage.propTypes = {};
 
+/**
+ * Check if the current sender is sending a primary message
+ * @param {CharacterData} currentSender Current sender
+ * @param {CharacterData | null} previousSender Previous sender
+ * @return {boolean} Whether if this sender is a primary message sender or not
+ */
+function isPrimarySender(currentSender, previousSender) {
+  if (previousSender == null) {
+    return true;
+  }
+
+  return previousSender.id !== currentSender.id;
+}
 
 /**
  * Check if the character is "me"
