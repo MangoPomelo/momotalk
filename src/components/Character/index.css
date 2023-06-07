@@ -1,0 +1,44 @@
+.character {
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: 64px 1fr 64px;
+  grid-template-rows: 32px 32px;
+  align-items: center;
+}
+
+.character > *:first-child {
+  grid-column-start: 1;
+  grid-column-end: 2;
+  grid-row-start: 1;
+  grid-row-end: 3;
+}
+
+.character__name {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 2;
+  color: rgb(68, 68, 68);
+  font-size: 18px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.character__club {
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  color: rgb(85, 85, 85);
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.character__school {
+  grid-column-start: 3;
+  grid-column-end: -1;
+  grid-row-start: 1;
+  grid-row-end: 3;
+  width: 64px;
+  height: 64px;
+}
