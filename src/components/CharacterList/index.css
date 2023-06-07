@@ -1,0 +1,13 @@
+.character-list {
+  border-top: 1px solid rgb(220, 229, 236);
+  background-color: rgb(243, 247, 248);
+  padding: 0;
+}
+
+.character-list > * {
+  cursor: pointer;
+}
+
+.character-list > *:hover {
+  background-color: rgb(220, 229, 236);
+}

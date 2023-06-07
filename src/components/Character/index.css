@@ -4,6 +4,19 @@
   grid-template-columns: 64px 1fr 64px;
   grid-template-rows: 32px 32px;
   align-items: center;
+  padding: 8px 16px;
+  position: relative;
+}
+
+.character::after {
+  display: block;
+  content: "";
+  position: absolute;
+  bottom: 0px;
+  right: 16px;
+  left: 16px;
+  height: 1px;
+  background-color: rgb(220, 229, 236);
 }
 
 .character > *:first-child {
