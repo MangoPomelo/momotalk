@@ -25,7 +25,7 @@ export function ChatPage() {
   }, []);
 
   return (
-    <>
+    <React.Fragment>
       <MessageList>
         {messageList
             .map((msg, idx) => [msg, senderList[idx]])
@@ -43,7 +43,7 @@ export function ChatPage() {
         }
       </MessageList>
       <InputPanel onSubmit={onSubmit} candidates={candidates} />
-    </>
+    </React.Fragment>
   );
 }
 

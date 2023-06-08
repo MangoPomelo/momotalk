@@ -114,9 +114,9 @@ function Candidate({ character, checked, onChange }) {
   const serializedCharacter = JSON.stringify(character);
 
   return (
-    <>
+    <React.Fragment>
       <input className="input-panel__candidate-radio" checked={checked} onChange={onChange} type="radio" name="character" id={character.id} value={serializedCharacter} />
       <label className="input-panel__candidate-avatar" htmlFor={character.id}><Avatar character={character} small/></label>
-    </>
+    </React.Fragment>
   );
 }
