@@ -4,6 +4,7 @@
   padding: 0;
 }
 
+.character-list *:has(> input:checked),
 .character-list > *:hover {
   background-color: rgb(220, 229, 236);
 }
