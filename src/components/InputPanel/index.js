@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
 import { CharacterData } from '../../classes/characterData';
@@ -46,7 +46,7 @@ InputPanel.defaultProps = {
  */
 export function InputPanel({ candidates, onSubmit }) {
   const [message, setMessage] = useState('');
-  const [selectedCharacter, setSelectedCharacter] = useState(candidates[0] ?? new CharacterData('', '', '', ''));
+  const [selectedCharacter, setSelectedCharacter] = useState(new CharacterData('', '', '', ''));
 
   const onInputTextChange = useCallback((event) => {
     setMessage(event.target.value);
@@ -62,6 +62,10 @@ export function InputPanel({ candidates, onSubmit }) {
     onSubmit(event, message, selectedCharacter);
     setMessage('');
   }, [message, selectedCharacter]);
+
+  useEffect(() => {
+    setSelectedCharacter(new CharacterData('', '', '', ''));
+  }, [candidates]);
 
   return (
     <form className="input-panel" onSubmit={onFormSubmit}>
@@ -93,6 +97,11 @@ Candidate.propTypes = {
    * Callback function to be called when the input radio is changed
    */
   onChange: PropTypes.func,
+};
+
+Candidate.defaultProps = {
+  checked: false,
+  onChange: () => {},
 };
 
 /**

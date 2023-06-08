@@ -43,7 +43,7 @@ SelectPanel.defaultProps = {
  */
 export function SelectPanel({ characters, onSubmit }) {
   const [checkedStates, setCheckedStates] = useState(new Array(characters.length).fill(false));
-  const [isFirstTimeRender, setIsFirstTimeRender] = useState(true);
+  const isFirstTimeRenderRef = useRef(true);
   const submitButtonRef = useRef(null);
 
   const onChange = useCallback((event, idx) => {
@@ -59,8 +59,8 @@ export function SelectPanel({ characters, onSubmit }) {
 
   useLayoutEffect(() => {
     // Skip first time render otherwise it will submit and trigger other observers render
-    if (isFirstTimeRender) {
-      setIsFirstTimeRender(false);
+    if (isFirstTimeRenderRef.current) {
+      isFirstTimeRenderRef.current = false;
       return;
     }
 
@@ -105,6 +105,7 @@ WrappedCharacter.propTypes = {
 };
 
 WrappedCharacter.defaultProps = {
+  checked: false,
   onChange: () => {},
 };
 
