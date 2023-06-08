@@ -7,7 +7,11 @@ export default {
   tags: ['autodocs'],
 };
 
-export const Default = {
+export const NoCandidate = {
+  args: {},
+};
+
+export const HasCandidates = {
   args: {
     candidates: [
       new CharacterData('alice', '/images/character/Alice.png', 'game development development', '/images/emblem/millennium_science_academy.png'),
