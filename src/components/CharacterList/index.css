@@ -4,10 +4,6 @@
   padding: 0;
 }
 
-.character-list > * {
-  cursor: pointer;
-}
-
 .character-list > *:hover {
   background-color: rgb(220, 229, 236);
 }
