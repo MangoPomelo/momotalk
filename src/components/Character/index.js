@@ -31,7 +31,7 @@ export function Character({
       <Avatar character={character}/>
       <span className="character__name">{character.name}</span>
       <span className="character__club">{character.club}</span>
-      <img className="character__school" src={character.school} />
+      <img className="character__school" src={character.school} alt={`${character.name}'s school logo`} />
     </section>
   );
 }
