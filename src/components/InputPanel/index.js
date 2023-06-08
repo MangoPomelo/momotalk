@@ -112,10 +112,11 @@ Candidate.propTypes = {
  */
 function Candidate({ character, checked, onChange }) {
   const serializedCharacter = JSON.stringify(character);
+  const inputId = `inputPanelCandidate${character.id}`;
 
   return (
-    <label className="input-panel__candidate-avatar" htmlFor={character.id}>
-      <input className="input-panel__candidate-radio" checked={checked} onChange={onChange} type="radio" name="character" id={character.id} value={serializedCharacter} />
+    <label className="input-panel__candidate-avatar" htmlFor={inputId}>
+      <input className="input-panel__candidate-radio" checked={checked} onChange={onChange} type="radio" name="character" id={inputId} value={serializedCharacter} />
       <Avatar character={character} small/>
     </label>
   );
