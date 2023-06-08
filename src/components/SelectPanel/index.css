@@ -1,0 +1,12 @@
+.wrapped-character__checkbox {
+  display: none;
+}
+
+.wrapped-character__character {
+  display: block;
+  cursor: pointer;
+}
+
+.select-panel__submit {
+  display: none;
+}
