@@ -1,23 +1,34 @@
 import React, { useCallback, useState } from 'react';
 import './index.css';
+import PropTypes from 'prop-types';
 import { InputPanel } from '../../components/InputPanel';
 import { MessageList } from '../../components/MessageList';
 import { Message } from '../../components/Message';
-import { CharacterData } from '../../classes/characterData';
+
+ChatPage.propTypes = {
+  /**
+   * Characters who are candidates for chatting
+   */
+  candidates: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.string,
+    name: PropTypes.string,
+    avatar: PropTypes.string,
+    club: PropTypes.string,
+    school: PropTypes.string,
+  })),
+};
+
+ChatPage.defaultProps = {
+  candidates: [],
+};
 
 /**
  * ChatPage component <br/>
  * @return {JSX.Element} ChatPage component <br/>
  */
-export function ChatPage() {
+export function ChatPage({ candidates }) {
   const [messageList, setMessageList] = useState([]);
   const [senderList, setSenderList] = useState([]);
-
-  const candidates = [
-    new CharacterData('alice', '/images/character/Alice.png', 'game development development', '/images/emblem/millennium_science_academy.png'),
-    new CharacterData('yuzu', '/images/character/Yuzu.png', 'game development development', '/images/emblem/millennium_science_academy.png'),
-    new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png'),
-  ];
 
   const onSubmit = useCallback((event, message, sender) => {
     setMessageList((messageList) => [...messageList, message]);
