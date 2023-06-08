@@ -6,6 +6,7 @@ import React from 'react';
 export default {
   title: 'Components/MessageList',
   component: MessageList,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
   },

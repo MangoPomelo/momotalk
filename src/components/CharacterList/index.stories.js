@@ -6,6 +6,7 @@ import React from 'react';
 export default {
   title: 'Components/CharacterList',
   component: CharacterList,
+  tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
   },
