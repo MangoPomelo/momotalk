@@ -2,6 +2,7 @@
   border-top: 1px solid rgb(220, 229, 236);
   background-color: rgb(243, 247, 248);
   padding: 0;
+  margin: 0;
 }
 
 .character-list *:has(> input:checked),
