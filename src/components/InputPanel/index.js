@@ -64,13 +64,20 @@ export function InputPanel({ candidates, onSubmit }) {
   }, [message, selectedCharacter]);
 
   useEffect(() => {
+    const isSelectedIncluded = candidates.some((c) => c.id === selectedCharacter.id && selectedCharacter.id !== '');
+
+    // If the selected character is included in the candidates, then there is no need to reset the selected character
+    if (isSelectedIncluded) {
+      return;
+    }
+
     setSelectedCharacter(new CharacterData('', '', '', ''));
   }, [candidates]);
 
   return (
     <form className="input-panel" onSubmit={onFormSubmit}>
       <input className="input-panel__input" placeholder="Aa" type="text" id="inputPanel" name="message" value={message} onChange={onInputTextChange} />
-      <input className="input-panel__submit" type="submit" value="submit" disabled={message.length <= 0 || candidates.length <= 0} />
+      <input className="input-panel__submit" type="submit" value="submit" disabled={isNullCharacter(selectedCharacter)} />
       {candidates.map((c) => <Candidate key={c.name} character={c} checked={selectedCharacter.id === c.id} onChange={onInputRadioChange}/>)}
     </form>
   );
@@ -129,4 +136,13 @@ function Candidate({ character, checked, onChange }) {
       <Avatar character={character} small/>
     </label>
   );
+}
+
+/**
+ * Check if a character is a null character
+ * @param {CharacterData} character Given character
+ * @return {boolean} Whether it is a null character
+ */
+function isNullCharacter(character) {
+  return character.id === '';
 }

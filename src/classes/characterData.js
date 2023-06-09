@@ -10,7 +10,7 @@ export class CharacterData {
    * @param {string} schoolIcon The school icon of the character
    */
   constructor(name, avatar, club, schoolIcon) {
-    this.id = `${name}|${avatar}|${club}|${schoolIcon}`;
+    this.id = `${name}${avatar}${club}${schoolIcon}`;
     this.name = name;
     this.avatar = avatar;
     this.club = club;
