@@ -12,7 +12,7 @@ Character.propTypes = {
     name: PropTypes.string,
     avatar: PropTypes.string,
     club: PropTypes.string,
-    school: PropTypes.string,
+    schoolIcon: PropTypes.string,
   }).isRequired,
 };
 
@@ -31,7 +31,7 @@ export function Character({
       <Avatar character={character}/>
       <span className="character__name">{character.name}</span>
       <span className="character__club">{character.club}</span>
-      <img className="character__school" src={character.school} alt={`${character.name}'s school logo`} />
+      <img className="character__school-icon" src={character.schoolIcon} alt={`${character.name}'s school icon`} />
     </section>
   );
 }

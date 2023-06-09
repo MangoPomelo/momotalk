@@ -13,7 +13,7 @@ InputPanel.propTypes = {
     name: PropTypes.string,
     avatar: PropTypes.string,
     club: PropTypes.string,
-    school: PropTypes.string,
+    schoolIcon: PropTypes.string,
   })),
 
   /**
@@ -85,7 +85,7 @@ Candidate.propTypes = {
     name: PropTypes.string,
     avatar: PropTypes.string,
     club: PropTypes.string,
-    school: PropTypes.string,
+    schoolIcon: PropTypes.string,
   }).isRequired,
 
   /**

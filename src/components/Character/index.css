@@ -47,7 +47,7 @@
   text-transform: capitalize;
 }
 
-.character__school {
+.character__school-icon {
   grid-column-start: 3;
   grid-column-end: -1;
   grid-row-start: 1;
