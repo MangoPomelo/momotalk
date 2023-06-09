@@ -1,6 +1,7 @@
 .main-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  height: 100vh;
 }
 
 .character__school-icon {

@@ -72,7 +72,7 @@ export function SelectPanel({ characters, onSubmit }) {
   }, [characters]);
 
   return (
-    <form onSubmit={onFormSubmit}>
+    <form className="select-panel" onSubmit={onFormSubmit}>
       <CharacterList>
         {characters.map((c, idx) => <WrappedCharacter key={c.id} character={c} checked={checkedStates[idx]} onChange={(e) => onChange(e, idx)} />)}
       </CharacterList>

@@ -1,3 +1,13 @@
+.select-panel {
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.select-panel::-webkit-scrollbar {
+  display: none;
+}
+
 .wrapped-character__checkbox {
   display: none;
 }
