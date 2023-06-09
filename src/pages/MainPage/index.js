@@ -21,7 +21,8 @@ export function MainPage() {
   }, []);
 
   const onSubmit = useCallback((event, selected) => {
-    setSelectedCharacters(selected);
+    const sensei = new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png');
+    setSelectedCharacters([...selected, sensei]);
   });
 
   return (
