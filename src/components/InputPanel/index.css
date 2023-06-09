@@ -8,6 +8,7 @@
   padding: 16px;
   row-gap: 10px;
   column-gap: 5px;
+  background-color: rgb(247, 247, 247);;
 }
 
 .input-panel__input {
