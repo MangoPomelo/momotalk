@@ -75,7 +75,7 @@ span.message__content {
 }
 
 .message--from-me
-.message__content {
+span.message__content {
   background-color: rgb(74, 138, 202);
 }
 
