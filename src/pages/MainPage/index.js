@@ -3,6 +3,7 @@ import { ChatPage } from '../ChatPage';
 import { ListPage } from '../ListPage';
 import './index.css';
 import { CharacterModel } from '../../models/characterModel';
+import { CharacterData } from '../../classes/characterData';
 
 /**
  * MainPage component <br/>
