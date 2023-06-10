@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
 import { CharacterData } from '../../classes/characterData';
@@ -45,9 +45,11 @@ InputPanel.defaultProps = {
  * @return {JSX.Element} InputPanel component <br/>
  */
 export function InputPanel({ candidates, onSubmit }) {
+  const senseiRef = useRef(new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png'));
+
   const [textMessage, setTextMessage] = useState('');
   const [imageMessage, setImageMessage] = useState('');
-  const [selectedCharacter, setSelectedCharacter] = useState(new CharacterData('', '', '', ''));
+  const [selectedCharacter, setSelectedCharacter] = useState(senseiRef.current);
 
   const onInputImageChange = useCallback((event) => {
     if (event.target.files != null && event.target.files[0] != null) {
@@ -81,22 +83,23 @@ export function InputPanel({ candidates, onSubmit }) {
   }, [textMessage, imageMessage, selectedCharacter]);
 
   useEffect(() => {
-    const isSelectedIncluded = candidates.some((c) => c.id === selectedCharacter.id && selectedCharacter.id !== '');
+    const isSelectedIncluded = candidates.some((c) => c.id === selectedCharacter.id);
 
     // If the selected character is included in the candidates, then there is no need to reset the selected character
     if (isSelectedIncluded) {
       return;
     }
 
-    setSelectedCharacter(new CharacterData('', '', '', ''));
+    setSelectedCharacter(senseiRef.current);
   }, [candidates]);
 
   return (
     <form className="input-panel" onSubmit={onFormSubmit}>
       <input className="input-panel__image-upload" onChange={onInputImageChange} type="file" name="image-message" accept="image/*"/>
       <input className="input-panel__input" placeholder="Aa" type="text" id="inputPanel" name="message" value={textMessage} onChange={onInputTextChange} />
-      <input className="input-panel__submit" type="submit" value="submit" disabled={isNullCharacter(selectedCharacter) || (textMessage.length <= 0 && imageMessage.length <= 0)} />
+      <input className="input-panel__submit" type="submit" value="submit" disabled={textMessage.length <= 0 && imageMessage.length <= 0} />
       {candidates.map((c) => <Candidate key={c.name} character={c} checked={selectedCharacter.id === c.id} onChange={onInputRadioChange}/>)}
+      <Candidate character={senseiRef.current} checked={selectedCharacter.id === senseiRef.current.id} onChange={onInputRadioChange}/>
     </form>
   );
 }
@@ -154,13 +157,4 @@ function Candidate({ character, checked, onChange }) {
       <Avatar character={character} small/>
     </label>
   );
-}
-
-/**
- * Check if a character is a null character
- * @param {CharacterData} character Given character
- * @return {boolean} Whether it is a null character
- */
-function isNullCharacter(character) {
-  return character.id === '';
 }

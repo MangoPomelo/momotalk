@@ -3,7 +3,6 @@ import { ChatPage } from '../ChatPage';
 import { ListPage } from '../ListPage';
 import './index.css';
 import { CharacterModel } from '../../models/characterModel';
-import { CharacterData } from '../../classes/characterData';
 import { Header } from '../../components/Header';
 
 /**
@@ -23,8 +22,7 @@ export function MainPage() {
   }, []);
 
   const onSubmit = useCallback((event, selected) => {
-    const sensei = new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png');
-    setSelectedCharacters([...selected, sensei]);
+    setSelectedCharacters(selected);
   });
 
   return (
