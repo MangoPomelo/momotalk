@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import './index.css';
 import { CharacterData } from '../../classes/characterData';
 import { Avatar } from '../Avatar';
+import { useUpdateEffect } from '../../hooks/useUpdateEffect';
 
 InputPanel.propTypes = {
   /**
@@ -47,7 +48,6 @@ InputPanel.defaultProps = {
 export function InputPanel({ candidates, onSubmit }) {
   const senseiRef = useRef(new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png'));
   const submitButtonRef = useRef(null);
-  const isFirstTimeRenderRef = useRef(true);
 
   const [textMessage, setTextMessage] = useState('');
   const [imageMessage, setImageMessage] = useState('');
@@ -98,13 +98,8 @@ export function InputPanel({ candidates, onSubmit }) {
     setSelectedCharacter(senseiRef.current);
   }, [candidates]);
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     // Skip first time render otherwise it will submit an empty message
-    if (isFirstTimeRenderRef.current) {
-      isFirstTimeRenderRef.current = false;
-      return;
-    }
-
     submitButtonRef.current.click();
   }, [imageMessage]);
 

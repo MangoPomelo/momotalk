@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
 import { Character } from '../Character';
 import { CharacterList } from '../CharacterList';
+import { useUpdateEffect } from '../../hooks/useUpdateEffect';
 
 SelectPanel.propTypes = {
   /**
@@ -43,7 +44,6 @@ SelectPanel.defaultProps = {
  */
 export function SelectPanel({ characters, onSubmit }) {
   const [checkedStates, setCheckedStates] = useState(new Array(characters.length).fill(false));
-  const isFirstTimeRenderRef = useRef(true);
   const submitButtonRef = useRef(null);
 
   const onChange = useCallback((event, idx) => {
@@ -57,13 +57,8 @@ export function SelectPanel({ characters, onSubmit }) {
     onSubmit(event, selected);
   }, [checkedStates, characters]);
 
-  useLayoutEffect(() => {
+  useUpdateEffect(() => {
     // Skip first time render otherwise it will submit and trigger other observers render
-    if (isFirstTimeRenderRef.current) {
-      isFirstTimeRenderRef.current = false;
-      return;
-    }
-
     submitButtonRef.current.click();
   }, [checkedStates]);
 
