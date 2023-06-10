@@ -55,7 +55,9 @@ export function Message({
     <li className={['message', primary && 'message--primary', fromMe && 'message--from-me'].join(' ')}>
       <img className="message__avatar" src={sender.avatar} alt={sender.name}/>
       <span className="message__name">{sender.name}</span>
-      <span className="message__content">{content}</span>
+      <span className="message__content">
+        {content.startsWith('blob:') ? <img src={content} alt="image"/> : content}
+      </span>
     </li>
   );
 }

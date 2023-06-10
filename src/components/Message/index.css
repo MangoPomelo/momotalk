@@ -53,6 +53,23 @@
   grid-area: content;
 }
 
+.message
+.message__content:has(> img:only-child) {
+  max-width: 75%;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(231, 235, 236);
+}
+
+.message
+.message__content:has(> img:only-child)::before {
+  display: none;
+}
+
+.message
+.message__content > img:only-child {
+  width: 100%;
+}
+
 .message--primary
 .message__content::before {
   content: "";
