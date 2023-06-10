@@ -46,12 +46,7 @@ Header.defaultProps = {
  * }} props Properties <br/>
  * @return {JSX.Element} Header component <br/>
  */
-export function Header(props) {
-  const logo = props.logo;
-  const title = props.title;
-  const backgroundColor = props.backgroundColor;
-  const onHelpClick = props.onHelpClick;
-
+export function Header({ logo, title, backgroundColor, onHelpClick }) {
   return (
     <header className="header" style={{ backgroundColor }}>
       <img className="header__logo" src={logo} alt="logo"/>
