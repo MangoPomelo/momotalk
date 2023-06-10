@@ -3,6 +3,8 @@
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 64px 1fr;
   height: 100vh;
+  max-width: 1440px;
+  margin: 0 auto;
 }
 
 .main-page > .header {
@@ -12,4 +14,18 @@
 
 .character__school-icon {
   filter: brightness(15%) sepia(100) saturate(100%) hue-rotate(180deg);
+}
+
+*:has(> .main-page) {
+  container-type: inline-size;
+  container-name: main-wrapper;
+}
+
+@container main-wrapper (min-width: 1440px) {
+  .main-page {
+    border-left: 1px solid rgb(231, 235, 236);
+    border-right: 1px solid rgb(231, 235, 236);
+    border-radius: 10px;
+    overflow: hidden;
+  }
 }
