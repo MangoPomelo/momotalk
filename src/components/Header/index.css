@@ -1,0 +1,30 @@
+.header {
+  background-color: rgb(252, 150, 171);
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  column-gap: 12px;
+}
+
+.header__logo {
+  width: 32px;
+  height: 32px;
+}
+
+.header__title {
+  color: rgb(255, 255, 255);
+  font-size: 32px;
+  text-transform: capitalize;
+}
+
+.header__help {
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.25) 2px 2px 2px;
+  background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%"><path d="M5 0C2 0 0 2 0 5v54c0 3 2 5 5 5h54c3 0 5-2 5-5V5c0-3-2-5-5-5zm26 8l9 2 5 6 1 5v5l-3 4-5 5-3 1-1 1-1 1v2l-1 2h-5l-2-2v-2l1-3 1-2 4-4 3-2 3-1 1-2v-3-1l-1-2-6-2-5 1-2 2h-2l-4-3a2 2 0 010-3l4-3 9-2zm-2 38a5 5 0 110 10 5 5 0 010-10z" fill="%23FFFFFF" stroke="none" stroke-width="1"></path></svg>');
+  background-color: transparent;
+  border: none;
+  color: transparent;
+}

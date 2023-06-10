@@ -1,7 +1,13 @@
 .main-page {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-template-rows: 64px 1fr;
   height: 100vh;
+}
+
+.main-page > .header {
+  grid-column-start: 1;
+  grid-column-end: -1;
 }
 
 .character__school-icon {

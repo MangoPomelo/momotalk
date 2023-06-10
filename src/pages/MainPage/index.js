@@ -4,6 +4,7 @@ import { ListPage } from '../ListPage';
 import './index.css';
 import { CharacterModel } from '../../models/characterModel';
 import { CharacterData } from '../../classes/characterData';
+import { Header } from '../../components/Header';
 
 /**
  * MainPage component <br/>
@@ -28,6 +29,7 @@ export function MainPage() {
 
   return (
     <main className="main-page">
+      <Header title="yuzuTalk" onHelpClick={() => void open('https://twitter.com/messages/compose?recipient_id=1390445620444291073&ref_src=twsrc%5Etfw')}/>
       <ListPage characters={loadedCharacters} onSubmit={onSubmit}/>
       <ChatPage candidates={selectedCharacters}/>
     </main>
