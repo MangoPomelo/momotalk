@@ -40,7 +40,7 @@
 }
 
 .message
-.message__content {
+span.message__content {
   position: relative;
   font-size: 20px;
   line-height: 24px;
@@ -51,23 +51,6 @@
   width: fit-content;
   padding: 8px;
   grid-area: content;
-}
-
-.message
-.message__content:has(> img:only-child) {
-  max-width: 75%;
-  background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(231, 235, 236);
-}
-
-.message
-.message__content:has(> img:only-child)::before {
-  display: none;
-}
-
-.message
-.message__content > img:only-child {
-  width: 100%;
 }
 
 .message--primary
@@ -102,4 +85,19 @@
   right: -5px;
   border-width: 5px 0px 5px 5px;
   border-color: transparent transparent transparent rgb(74, 138, 202);
+}
+
+.message
+img.message__content {
+  max-width: 75%;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(231, 235, 236);
+  border-radius: 10px;
+  padding: 8px;
+  grid-area: content;
+}
+
+.message
+img.message__content::before {
+  display: none;
 }
