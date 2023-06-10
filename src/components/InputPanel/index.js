@@ -45,11 +45,19 @@ InputPanel.defaultProps = {
  * @return {JSX.Element} InputPanel component <br/>
  */
 export function InputPanel({ candidates, onSubmit }) {
-  const [message, setMessage] = useState('');
+  const [textMessage, setTextMessage] = useState('');
+  const [imageMessage, setImageMessage] = useState('');
   const [selectedCharacter, setSelectedCharacter] = useState(new CharacterData('', '', '', ''));
 
+  const onInputImageChange = useCallback((event) => {
+    if (event.target.files != null && event.target.files[0] != null) {
+      const imageUrl = URL.createObjectURL(event.target.files[0]);
+      setImageMessage(imageUrl);
+    }
+  }, []);
+
   const onInputTextChange = useCallback((event) => {
-    setMessage(event.target.value);
+    setTextMessage(event.target.value);
   }, []);
 
   const onInputRadioChange = useCallback((event) => {
@@ -59,9 +67,18 @@ export function InputPanel({ candidates, onSubmit }) {
 
   const onFormSubmit = useCallback((event) => {
     event.preventDefault();
-    onSubmit(event, message, selectedCharacter);
-    setMessage('');
-  }, [message, selectedCharacter]);
+
+    // Image message has superior priority
+    if (imageMessage !== '') {
+      onSubmit(event, imageMessage, selectedCharacter);
+      setImageMessage('');
+      return;
+    }
+
+    // Otherwise send text message
+    onSubmit(event, textMessage, selectedCharacter);
+    setTextMessage('');
+  }, [textMessage, imageMessage, selectedCharacter]);
 
   useEffect(() => {
     const isSelectedIncluded = candidates.some((c) => c.id === selectedCharacter.id && selectedCharacter.id !== '');
@@ -76,8 +93,9 @@ export function InputPanel({ candidates, onSubmit }) {
 
   return (
     <form className="input-panel" onSubmit={onFormSubmit}>
-      <input className="input-panel__input" placeholder="Aa" type="text" id="inputPanel" name="message" value={message} onChange={onInputTextChange} />
-      <input className="input-panel__submit" type="submit" value="submit" disabled={isNullCharacter(selectedCharacter) || message.length <= 0} />
+      <input className="input-panel__image-upload" onChange={onInputImageChange} type="file" name="image-message" accept="image/*"/>
+      <input className="input-panel__input" placeholder="Aa" type="text" id="inputPanel" name="message" value={textMessage} onChange={onInputTextChange} />
+      <input className="input-panel__submit" type="submit" value="submit" disabled={isNullCharacter(selectedCharacter) || (textMessage.length <= 0 && imageMessage.length <= 0)} />
       {candidates.map((c) => <Candidate key={c.name} character={c} checked={selectedCharacter.id === c.id} onChange={onInputRadioChange}/>)}
     </form>
   );

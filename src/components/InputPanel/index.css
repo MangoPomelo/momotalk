@@ -11,8 +11,31 @@
   background-color: rgb(247, 247, 247);;
 }
 
+.input-panel__image-upload {
+  color: transparent;
+  width: 32px;
+  height: 32px;
+}
+
+.input-panel__image-upload::-webkit-file-upload-button {
+  cursor: pointer;
+  background-image: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32"><path d="M64 6.7v50.6H0V6.7zm-20.6 9a6.4 6.4 0 100 12.8 6.4 6.4 0 000-12.8zm14 33.3l-9.3-14.3a3.1 3.1 0 00-5-.4l-5.6 6.4-10-15.4a3.1 3.1 0 00-5.3 0L6.5 49h51z" stroke-width="8" fill="%234C5B70"></path></svg>');
+  background-repeat: no-repeat;
+  background-color: transparent;
+  color: transparent;
+  border: none;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 50ms ease 0s;
+}
+
+.input-panel__image-upload::-webkit-file-upload-button:active {
+  transform: scale(0.95);
+}
+
 .input-panel__input {
-  grid-column-start: 1;
+  grid-column-start: 2;
   grid-column-end: -2;
   justify-self: stretch;
   align-self: stretch;
