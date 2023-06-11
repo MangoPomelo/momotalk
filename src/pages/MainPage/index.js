@@ -39,7 +39,7 @@ export function MainPage() {
   });
 
   const onChangeLanguage = useCallback((event) => {
-    const selectableLanguages = ['ch', 'en', 'jp', 'kr', 'th', 'tw', 'vi'];
+    const selectableLanguages = ['cn', 'en', 'jp', 'kr', 'th', 'tw', 'vi'];
     const currentLanguageIdx = selectableLanguages.indexOf(currentLanguage);
     const nextLanguage = selectableLanguages[(currentLanguageIdx + 1) % selectableLanguages.length];
     setCurrentLanguage(nextLanguage);

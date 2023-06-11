@@ -11,10 +11,10 @@ export class CharacterModel {
 
   /**
    * Constructor
-   * @param {('ch' | 'en' | 'jp' | 'kr' | 'th' | 'tw' | 'vi')} defaultLanguage Language for initial data fetching
+   * @param {('cn' | 'en' | 'jp' | 'kr' | 'th' | 'tw' | 'vi')} defaultLanguage Language for initial data fetching
    */
   constructor(defaultLanguage = 'en') {
-    const selectableLanguages = ['ch', 'en', 'jp', 'kr', 'th', 'tw', 'vi'];
+    const selectableLanguages = ['cn', 'en', 'jp', 'kr', 'th', 'tw', 'vi'];
     const language = selectableLanguages.includes(defaultLanguage) ? defaultLanguage : 'en';
 
     this.#currentLanguage = language;
@@ -25,11 +25,11 @@ export class CharacterModel {
 
   /**
    * Change the current language for data fetching
-   * @param {('ch' | 'en' | 'jp' | 'kr' | 'th' | 'tw' | 'vi')} language Target language
+   * @param {('cn' | 'en' | 'jp' | 'kr' | 'th' | 'tw' | 'vi')} language Target language
    * @return {boolean} Success of not
    */
   setLanguage(language) {
-    const selectableLanguages = ['ch', 'en', 'jp', 'kr', 'th', 'tw', 'vi'];
+    const selectableLanguages = ['cn', 'en', 'jp', 'kr', 'th', 'tw', 'vi'];
     if (!selectableLanguages.includes(language)) {
       return false;
     }
