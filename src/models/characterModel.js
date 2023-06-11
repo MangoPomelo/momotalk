@@ -4,24 +4,57 @@ import { CharacterData } from '../classes/characterData';
  * Character model which connects to schale.gg
  */
 export class CharacterModel {
-  #cache = [];
-  #studentUrl = 'https://schale.gg/data/en/students.min.json';
-  #localizationUrl = 'https://schale.gg/data/en/localization.min.json';
-  #hasCache = false;
+  #currentLanguage;
+  #cache;
+  #studentUrl;
+  #localizationUrl;
+
+  /**
+   * Constructor
+   * @param {('ch' | 'en' | 'jp' | 'kr' | 'th' | 'tw' | 'vi')} defaultLanguage Language for initial data fetching
+   */
+  constructor(defaultLanguage = 'en') {
+    const selectableLanguages = ['ch', 'en', 'jp', 'kr', 'th', 'tw', 'vi'];
+    const language = selectableLanguages.includes(defaultLanguage) ? defaultLanguage : 'en';
+
+    this.#currentLanguage = language;
+    this.#cache = {};
+    this.#studentUrl = `https://schale.gg/data/${language}/students.min.json`;
+    this.#localizationUrl = `https://schale.gg/data/${language}/localization.min.json`;
+  }
+
+  /**
+   * Change the current language for data fetching
+   * @param {('ch' | 'en' | 'jp' | 'kr' | 'th' | 'tw' | 'vi')} language Target language
+   * @return {boolean} Success of not
+   */
+  setLanguage(language) {
+    const selectableLanguages = ['ch', 'en', 'jp', 'kr', 'th', 'tw', 'vi'];
+    if (!selectableLanguages.includes(language)) {
+      return false;
+    }
+
+    this.#currentLanguage = language;
+    this.#studentUrl = `https://schale.gg/data/${language}/students.min.json`;
+    this.#localizationUrl = `https://schale.gg/data/${language}/localization.min.json`;
+
+    return true;
+  }
 
   /**
    * Fetch and adapt data to character data list
    * @return {CharacterData[]} Character data list
    */
   async fetchCharacterDataList() {
-    if (this.#hasCache) {
-      return this.#cache;
+    if (this.#hasCache()) {
+      return this.#getCache();
     }
 
     const [studentList, localization] = await Promise.all([this.#fetchStudents(), this.#fetchLocalization()]);
     const characterDataList = studentList.map((student) => this.#adaptStudentToCharacterData(student, localization));
+
     this.#cache = this.#cacheCharacterDataList(characterDataList);
-    return this.#cache;
+    return this.#cache[this.#currentLanguage];
   }
 
   /**
@@ -55,8 +88,7 @@ export class CharacterModel {
    * @return {CharacterData[]} Cached result
    */
   #cacheCharacterDataList(characterDataList) {
-    this.#cache = characterDataList;
-    this.#hasCache = true;
+    this.#cache[this.#currentLanguage] = characterDataList;
     return this.#cache;
   }
 
@@ -68,5 +100,21 @@ export class CharacterModel {
     const response = await fetch(this.#localizationUrl);
     const json = response.json();
     return json;
+  }
+
+  /**
+   * Check if the cached data exists
+   * @return {boolean} True if the cached data exists
+   */
+  #hasCache() {
+    return this.#cache[this.#currentLanguage] != null;
+  }
+
+  /**
+   * Get the cached data by current selected language
+   * @return {CharacterData[]} Cached result
+   */
+  #getCache() {
+    return this.#cache[this.#currentLanguage] ?? [];
   }
 }
