@@ -68,10 +68,17 @@ span.message__content {
 
 .message.message--from-me {
   grid-template:
-    "name avatar" auto
-    "content avatar" auto
-  / minmax(0px, 1fr) 64px;
+    "name" auto
+    "content" auto
+  / minmax(0px, 1fr);
   justify-items: flex-end;
+}
+
+.message.message--from-me
+.message__avatar,
+.message.message--from-me
+.message__name {
+  display: none;
 }
 
 .message--from-me
