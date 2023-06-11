@@ -2,8 +2,19 @@
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
+  display: flex;
+  flex-direction: column;
 }
 
 .chat-page::-webkit-scrollbar {
   display: none;
+}
+
+.chat-page .message-list {
+  flex-grow: 1;
+}
+
+.chat-page .input-panel {
+  position: sticky;
+  bottom: 0;
 }
