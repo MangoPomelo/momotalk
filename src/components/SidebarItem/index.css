@@ -2,5 +2,10 @@
   cursor: pointer;
   width: 32px;
   height: 32px;
-  padding: 16px;
+  padding: 32px;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: transparent;
+  border: none;
 }

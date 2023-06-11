@@ -38,12 +38,6 @@ SidebarItem.defaultProps = {
  * }} props Props <br/>
  * @return {JSX.Element} SidebarItem component <br/>
  */
-export function SidebarItem(props) {
-  const title = props.title;
-  const icon = props.icon;
-  const onClick = props.onClick;
-
-  return (
-    <img className="sidebar__item" onClick={onClick} src={icon} alt={title} />
-  );
+export function SidebarItem({ title, icon, onClick }) {
+  return <button className="sidebar__item" onClick={onClick} style={{ backgroundImage: `url('${icon}')` }}>{title}</button>;
 }
