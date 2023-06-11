@@ -48,6 +48,7 @@ InputPanel.defaultProps = {
 export function InputPanel({ candidates, onSubmit }) {
   const senseiRef = useRef(new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png'));
   const submitButtonRef = useRef(null);
+  const imageUploadButtonRef = useRef(null);
 
   const [textMessage, setTextMessage] = useState('');
   const [imageMessage, setImageMessage] = useState('');
@@ -76,6 +77,9 @@ export function InputPanel({ candidates, onSubmit }) {
     if (imageMessage !== '') {
       onSubmit(event, imageMessage, selectedCharacter);
       setImageMessage('');
+
+      // Since input file cannot be controlled, data has to be reset manually
+      imageUploadButtonRef.current.value = null;
       return;
     }
 
@@ -105,7 +109,7 @@ export function InputPanel({ candidates, onSubmit }) {
 
   return (
     <form className="input-panel" onSubmit={onFormSubmit}>
-      <input className="input-panel__image-upload" onChange={onInputImageChange} type="file" name="image-message" accept="image/*"/>
+      <input className="input-panel__image-upload" onChange={onInputImageChange} ref={imageUploadButtonRef} type="file" name="image-message" accept="image/*"/>
       <input className="input-panel__input" placeholder="Aa" type="text" id="inputPanel" name="message" value={textMessage} onChange={onInputTextChange} />
       <input className="input-panel__submit" type="submit" value="submit" disabled={textMessage.length <= 0 && imageMessage.length <= 0} ref={submitButtonRef} />
       {candidates.map((c) => <Candidate key={c.name} character={c} checked={selectedCharacter.id === c.id} onChange={onInputRadioChange}/>)}
