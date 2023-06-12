@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/momotalk/static/css/main.674e0335.css",
+    "main.js": "/momotalk/static/js/main.0a353ef3.js",
+    "index.html": "/momotalk/index.html",
+    "main.674e0335.css.map": "/momotalk/static/css/main.674e0335.css.map",
+    "main.0a353ef3.js.map": "/momotalk/static/js/main.0a353ef3.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.674e0335.css",
+    "static/js/main.0a353ef3.js"
+  ]
+}
