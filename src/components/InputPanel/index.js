@@ -113,7 +113,7 @@ export function InputPanel({ candidates, onSubmit }) {
       <input className="input-panel__input" placeholder="Aa" type="text" id="inputPanel" name="message" value={textMessage} onChange={onInputTextChange} />
       <input className="input-panel__submit" type="submit" value="submit" disabled={textMessage.length <= 0 && imageMessage.length <= 0} ref={submitButtonRef} />
       {candidates.map((c) => <Candidate key={c.name} character={c} checked={selectedCharacter.id === c.id} onChange={onInputRadioChange}/>)}
-      <Candidate character={senseiRef.current} checked={selectedCharacter.id === senseiRef.current.id} onChange={onInputRadioChange}/>
+      <Candidate key={senseiRef.current.name} character={senseiRef.current} checked={selectedCharacter.id === senseiRef.current.id} onChange={onInputRadioChange}/>
     </form>
   );
 }
