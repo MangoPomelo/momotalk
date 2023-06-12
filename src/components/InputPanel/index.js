@@ -4,6 +4,8 @@ import './index.css';
 import { CharacterData } from '../../classes/characterData';
 import { Avatar } from '../Avatar';
 import { useUpdateEffect } from '../../hooks/useUpdateEffect';
+import { sensei } from '../../assets/avatars';
+import { dummy } from '../../assets/schoolLogos';
 
 InputPanel.propTypes = {
   /**
@@ -46,7 +48,7 @@ InputPanel.defaultProps = {
  * @return {JSX.Element} InputPanel component <br/>
  */
 export function InputPanel({ candidates, onSubmit }) {
-  const senseiRef = useRef(new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png'));
+  const senseiRef = useRef(new CharacterData('sensei', sensei, '', dummy));
   const submitButtonRef = useRef(null);
   const imageUploadButtonRef = useRef(null);
 
