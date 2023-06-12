@@ -38,6 +38,7 @@ SelectPanel.defaultProps = {
 /**
  * SelectPanel component <br/>
  * @param {{
+ *  characters: CharacterData[],
  *  onSubmit: onSubmit
  * }} props Properties <br/>
  * @return {JSX.Element} SelectPanel component <br/>
