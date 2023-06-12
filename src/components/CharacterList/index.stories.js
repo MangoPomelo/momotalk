@@ -2,6 +2,7 @@ import { CharacterList } from '.';
 import { CharacterData } from '../../classes/characterData';
 import { Character } from '../Character';
 import React from 'react';
+import { millennium } from '../../assets/schoolLogos';
 
 export default {
   title: 'Components/CharacterList',
@@ -16,19 +17,19 @@ export default {
       mapping: {
         Character1: <Character
           key="Character1"
-          character={new CharacterData('midori', '/images/character/Midori.png', 'game development development', '/images/emblem/millennium_science_academy.png')}
+          character={new CharacterData('midori', 'https://schale.gg/images/student/collection/Student_Portrait_Midori_Collection.webp', 'game development development', millennium)}
         />,
         Character2: <Character
           key="Character2"
-          character={new CharacterData('momoi', '/images/character/Momoi.png', 'game development development', '/images/emblem/millennium_science_academy.png')}
+          character={new CharacterData('momoi', 'https://schale.gg/images/student/collection/Student_Portrait_Momoi_Collection.webp', 'game development development', millennium)}
         />,
         Character3: <Character
           key="Character3"
-          character={new CharacterData('yuzu', '/images/character/Yuzu.png', 'game development development', '/images/emblem/millennium_science_academy.png')}
+          character={new CharacterData('yuzu', 'https://schale.gg/images/student/collection/Student_Portrait_Yuzu_Collection.webp', 'game development development', millennium)}
         />,
         Character4: <Character
           key="Character4"
-          character={new CharacterData('alice', '/images/character/Alice.png', 'game development development', '/images/emblem/millennium_science_academy.png')}
+          character={new CharacterData('alice', 'https://schale.gg/images/student/collection/Student_Portrait_Aris_Collection.webp', 'game development development', millennium)}
         />,
       },
       control: {

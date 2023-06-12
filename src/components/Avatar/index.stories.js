@@ -1,12 +1,14 @@
 import { Avatar } from '.';
 import { CharacterData } from '../../classes/characterData';
+import { sensei } from '../../assets/avatars';
+import { dummy } from '../../assets/schoolLogos';
 
 export default {
   title: 'Components/Avatar',
   component: Avatar,
   tags: ['autodocs'],
   args: {
-    character: new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png'),
+    character: new CharacterData('sensei', sensei, '', dummy),
   },
 };
 

@@ -2,6 +2,8 @@ import { MessageList } from '.';
 import { CharacterData } from '../../classes/characterData';
 import { Message } from '../Message';
 import React from 'react';
+import { sensei } from '../../assets/avatars';
+import { dummy, millennium } from '../../assets/schoolLogos';
 
 export default {
   title: 'Components/MessageList',
@@ -16,26 +18,26 @@ export default {
       mapping: {
         Message1: <Message
           key="Message1"
-          sender={new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png')}
+          sender={new CharacterData('sensei', sensei, '', dummy)}
           content='Hello~!'
           primary
           fromMe
         />,
         Message2: <Message
           key="Message2"
-          sender={new CharacterData('sensei', '/images/character/Sensei.png', '', '/images/emblem/dummy.png')}
+          sender={new CharacterData('sensei', sensei, '', dummy)}
           content='How are you?'
           fromMe
         />,
         Message3: <Message
           key="Message3"
-          sender={new CharacterData('alice', '/images/character/Alice.png', 'game development development', '/images/emblem/millennium_science_academy.png')}
+          sender={new CharacterData('alice', 'https://schale.gg/images/student/collection/Student_Portrait_Aris_Collection.webp', 'game development development', millennium)}
           content='Fine, thanks!'
           primary
         />,
         Message4: <Message
           key="Message4"
-          sender={new CharacterData('alice', '/images/character/Alice.png', 'game development development', '/images/emblem/millennium_science_academy.png')}
+          sender={new CharacterData('alice', 'https://schale.gg/images/student/collection/Student_Portrait_Aris_Collection.webp', 'game development development', millennium)}
           content='How is it going?'
         />,
       },
