@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 64px 1fr 1fr;
   grid-template-rows: 64px 1fr;
+  height: 100vh;
   height: 100dvh;
   max-width: 1440px;
   margin: 0 auto;
