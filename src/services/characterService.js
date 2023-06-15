@@ -3,7 +3,7 @@ import { CharacterData } from '../classes/characterData';
 /**
  * Character model which connects to schale.gg
  */
-export class CharacterModel {
+export class CharacterService {
   #currentLanguage;
   #cache;
   #studentUrl;

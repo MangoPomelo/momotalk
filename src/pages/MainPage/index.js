@@ -2,7 +2,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { ChatPage } from '../ChatPage';
 import { ListPage } from '../ListPage';
 import './index.css';
-import { CharacterModel } from '../../models/characterModel';
+import { CharacterService } from '../../services/characterService';
 import { Header } from '../../components/Header';
 import { Sidebar } from '../../components/Sidebar';
 import { SidebarItem } from '../../components/SidebarItem';
@@ -13,7 +13,7 @@ import { toPng } from 'html-to-image';
  * @return {JSX.Element} MainPage component <br/>
  */
 export function MainPage() {
-  const characterModelRef = useRef(new CharacterModel());
+  const characterServiceRef = useRef(new CharacterService());
 
   const [loadedCharacters, setLoadedCharacters] = useState([]);
   const [selectedCharacters, setSelectedCharacters] = useState([]);
@@ -21,9 +21,9 @@ export function MainPage() {
 
   useEffect(() => {
     (async () => {
-      const model = characterModelRef.current;
-      model.setLanguage(currentLanguage);
-      const characterDataList = await model.fetchCharacterDataList();
+      const characterService = characterServiceRef.current;
+      characterService.setLanguage(currentLanguage);
+      const characterDataList = await characterService.fetchCharacterDataList();
       setLoadedCharacters(characterDataList);
     })();
   }, [currentLanguage]);
