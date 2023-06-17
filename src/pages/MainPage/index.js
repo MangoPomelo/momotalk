@@ -7,25 +7,32 @@ import { Header } from '../../components/Header';
 import { Sidebar } from '../../components/Sidebar';
 import { SidebarItem } from '../../components/SidebarItem';
 import { toPng } from 'html-to-image';
+import { useTranslation } from 'react-i18next';
+import { useUpdateEffect } from '../../hooks/useUpdateEffect';
 
 /**
  * MainPage component <br/>
  * @return {JSX.Element} MainPage component <br/>
  */
 export function MainPage() {
-  const characterServiceRef = useRef(new CharacterService());
+  const { i18n } = useTranslation();
+
+  const characterServiceRef = useRef(new CharacterService(i18n.language));
 
   const [loadedCharacters, setLoadedCharacters] = useState([]);
   const [selectedCharacters, setSelectedCharacters] = useState([]);
-  const [currentLanguage, setCurrentLanguage] = useState('en');
+  const [currentLanguage, setCurrentLanguage] = useState(i18n.language);
 
   useEffect(() => {
     (async () => {
       const characterService = characterServiceRef.current;
-      characterService.setLanguage(currentLanguage);
       const characterDataList = await characterService.fetchCharacterDataList();
       setLoadedCharacters(characterDataList);
     })();
+  }, []);
+
+  useUpdateEffect(() => {
+    i18n.changeLanguage(currentLanguage);
   }, [currentLanguage]);
 
   const onSubmit = useCallback((event, selected) => {

@@ -1,5 +1,6 @@
 import React from 'react';
 import { MainPage } from './pages/MainPage';
+import './i18n';
 
 /**
  * App component

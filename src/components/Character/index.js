@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
 import { Avatar } from '../Avatar';
+import { useTranslation } from 'react-i18next';
 
 Character.propTypes = {
   /**
@@ -26,12 +27,14 @@ Character.propTypes = {
 export function Character({
   character,
 }) {
+  const { t } = useTranslation();
+
   return (
     <section className="character">
       <Avatar character={character}/>
-      <span className="character__name">{character.name}</span>
-      <span className="character__club">{character.club}</span>
-      <img className="character__school-icon" src={character.schoolIcon} alt={`${character.name}'s school icon`} />
+      <span className="character__name">{t(character.name, { ns: 'students' })}</span>
+      <span className="character__club">{t(character.club, { ns: 'localization' })}</span>
+      <img className="character__school-icon" src={character.schoolIcon} alt={'school icon'} />
     </section>
   );
 }
