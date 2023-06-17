@@ -36,5 +36,5 @@ export function Avatar({
   character,
   size,
 }) {
-  return <img className={`avatar avatar--${size}`} src={character.avatar} alt={character.name} loading="lazy" />;
+  return <img className={`avatar avatar--${size}`} src={character.avatar} alt="avatar" loading="lazy" />;
 }
