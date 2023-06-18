@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
 import { CharacterItem } from '../CharacterItem';
@@ -44,33 +44,38 @@ SelectPanel.defaultProps = {
  * @return {JSX.Element} SelectPanel component <br/>
  */
 export function SelectPanel({ characters, onSubmit }) {
-  const [checkedStates, setCheckedStates] = useState(new Array(characters.length).fill(false));
+  const [checkedCharacters, setCheckedCharacters] = useState([]);
+
   const submitButtonRef = useRef(null);
 
-  const onChange = useCallback((event, idx) => {
-    const newCheckedStates = checkedStates.map((x, i) => i === idx ? !x : x);
-    setCheckedStates(newCheckedStates);
-  }, [checkedStates]);
+  const onChange = useCallback((event) => {
+    const deserializedCharacter = JSON.parse(event.target.value);
+
+    const index = checkedCharacters.findIndex((c) => c.id === deserializedCharacter.id);
+
+    // Filter it out when it exists else add it as new
+    if (index >= 0) {
+      const filtered = checkedCharacters.filter((c, idx) => idx !== index);
+      setCheckedCharacters(filtered);
+    } else {
+      setCheckedCharacters([...checkedCharacters, deserializedCharacter]);
+    }
+  }, [checkedCharacters]);
 
   const onFormSubmit = useCallback((event) => {
-    const selected = characters.filter((c, idx) => checkedStates[idx]);
     event.preventDefault();
-    onSubmit(event, selected);
-  }, [checkedStates, characters]);
+    onSubmit(event, checkedCharacters);
+  }, [checkedCharacters]);
 
   useUpdateEffect(() => {
     // Skip first time render otherwise it will submit and trigger other observers render
     submitButtonRef.current.click();
-  }, [checkedStates]);
-
-  useEffect(() => {
-    setCheckedStates(new Array(characters.length).fill(false));
-  }, [characters]);
+  }, [checkedCharacters]);
 
   return (
     <form className="select-panel" onSubmit={onFormSubmit}>
       <CharacterList>
-        {characters.map((c, idx) => <WrappedCharacter key={c.id} character={c} checked={checkedStates[idx]} onChange={(e) => onChange(e, idx)} />)}
+        {characters.map((c, idx) => <WrappedCharacter key={c.id} character={c} checked={checkedCharacters.some((checked) => checked.id === c.id)} onChange={onChange} />)}
       </CharacterList>
       <input className="select-panel__submit" type="submit" value="submit" ref={submitButtonRef} />
     </form>
@@ -121,11 +126,12 @@ WrappedCharacter.defaultProps = {
 * @return {JSX.Element} Candidate component <br/>
 */
 function WrappedCharacter({ character, checked, onChange }) {
+  const serializedCharacter = JSON.stringify(character);
   const inputId = `selectPanelWrappedCharacter${character.id}`;
 
   return (
     <label className="wrapped-character__character" htmlFor={inputId}>
-      <input className="wrapped-character__checkbox" type="checkbox" id={inputId} value={character.name} checked={checked} name={character.name} onChange={onChange} />
+      <input className="wrapped-character__checkbox" type="checkbox" id={inputId} value={serializedCharacter} checked={checked} name={character.name} onChange={onChange} />
       <CharacterItem character={character} />
     </label>
   );
