@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
-import { useTranslation } from 'react-i18next';
 
 Message.propTypes = {
   /**
@@ -52,12 +51,10 @@ export function Message({
   primary,
   fromMe,
 }) {
-  const { t } = useTranslation();
-
   return (
     <li className={['message', primary && 'message--primary', fromMe && 'message--from-me'].join(' ')}>
-      <img className="message__avatar" src={sender.avatar} alt={t(sender.name, { ns: 'students' })}/>
-      <span className="message__name">{t(sender.name, { ns: 'students' })}</span>
+      <img className="message__avatar" src={sender.avatar} alt={sender.name}/>
+      <span className="message__name">{sender.name}</span>
       {content.startsWith('blob:') ? <img className="message__content" src={content} alt="image"/> : <span className="message__content">{content}</span>}
     </li>
   );
