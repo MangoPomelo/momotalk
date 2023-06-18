@@ -10,6 +10,6 @@ export default {
 
 export const Default = {
   args: {
-    character: new CharacterData('alice', 'https://schale.gg/images/student/collection/Student_Portrait_Aris_Collection.webp', 'game development development', millennium),
+    character: new CharacterData('alice', 'https://schale.gg/images/student/collection/Student_Portrait_Aris_Collection.webp', 'game development department', millennium),
   },
 };

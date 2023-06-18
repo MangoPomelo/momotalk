@@ -31,13 +31,13 @@ export default {
         />,
         Message3: <MessageItem
           key="Message3"
-          sender={new CharacterData('alice', 'https://schale.gg/images/student/collection/Student_Portrait_Aris_Collection.webp', 'game development development', millennium)}
+          sender={new CharacterData('alice', 'https://schale.gg/images/student/collection/Student_Portrait_Aris_Collection.webp', 'game development department', millennium)}
           content='Fine, thanks!'
           primary
         />,
         Message4: <MessageItem
           key="Message4"
-          sender={new CharacterData('alice', 'https://schale.gg/images/student/collection/Student_Portrait_Aris_Collection.webp', 'game development development', millennium)}
+          sender={new CharacterData('alice', 'https://schale.gg/images/student/collection/Student_Portrait_Aris_Collection.webp', 'game development department', millennium)}
           content='How is it going?'
         />,
       },

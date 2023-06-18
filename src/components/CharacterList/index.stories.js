@@ -17,19 +17,19 @@ export default {
       mapping: {
         Character1: <CharacterItem
           key="Character1"
-          character={new CharacterData('midori', 'https://schale.gg/images/student/collection/Student_Portrait_Midori_Collection.webp', 'game development development', millennium)}
+          character={new CharacterData('midori', 'https://schale.gg/images/student/collection/Student_Portrait_Midori_Collection.webp', 'game development department', millennium)}
         />,
         Character2: <CharacterItem
           key="Character2"
-          character={new CharacterData('momoi', 'https://schale.gg/images/student/collection/Student_Portrait_Momoi_Collection.webp', 'game development development', millennium)}
+          character={new CharacterData('momoi', 'https://schale.gg/images/student/collection/Student_Portrait_Momoi_Collection.webp', 'game development department', millennium)}
         />,
         Character3: <CharacterItem
           key="Character3"
-          character={new CharacterData('yuzu', 'https://schale.gg/images/student/collection/Student_Portrait_Yuzu_Collection.webp', 'game development development', millennium)}
+          character={new CharacterData('yuzu', 'https://schale.gg/images/student/collection/Student_Portrait_Yuzu_Collection.webp', 'game development department', millennium)}
         />,
         Character4: <CharacterItem
           key="Character4"
-          character={new CharacterData('alice', 'https://schale.gg/images/student/collection/Student_Portrait_Aris_Collection.webp', 'game development development', millennium)}
+          character={new CharacterData('alice', 'https://schale.gg/images/student/collection/Student_Portrait_Aris_Collection.webp', 'game development department', millennium)}
         />,
       },
       control: {
