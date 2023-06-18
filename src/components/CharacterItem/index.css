@@ -1,4 +1,4 @@
-.character {
+.character-item {
   display: grid;
   column-gap: 16px;
   grid-template-columns: 64px 1fr 64px;
@@ -8,7 +8,7 @@
   position: relative;
 }
 
-.character::after {
+.character-item::after {
   display: block;
   content: "";
   position: absolute;
@@ -19,14 +19,14 @@
   background-color: rgb(220, 229, 236);
 }
 
-.character > *:first-child {
+.character-item > *:first-child {
   grid-column-start: 1;
   grid-column-end: 2;
   grid-row-start: 1;
   grid-row-end: 3;
 }
 
-.character__name {
+.character-item__name {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 1;
@@ -37,7 +37,7 @@
   text-transform: capitalize;
 }
 
-.character__club {
+.character-item__club {
   grid-column-start: 2;
   grid-column-end: 3;
   grid-row-start: 2;
@@ -47,7 +47,7 @@
   text-transform: capitalize;
 }
 
-.character__school-icon {
+.character-item__school-icon {
   grid-column-start: 3;
   grid-column-end: -1;
   grid-row-start: 1;

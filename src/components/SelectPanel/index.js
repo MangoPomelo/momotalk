@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
-import { Character } from '../Character';
+import { CharacterItem } from '../CharacterItem';
 import { CharacterList } from '../CharacterList';
 import { useUpdateEffect } from '../../hooks/useUpdateEffect';
 
@@ -126,7 +126,7 @@ function WrappedCharacter({ character, checked, onChange }) {
   return (
     <label className="wrapped-character__character" htmlFor={inputId}>
       <input className="wrapped-character__checkbox" type="checkbox" id={inputId} value={character.name} checked={checked} name={character.name} onChange={onChange} />
-      <Character character={character} />
+      <CharacterItem character={character} />
     </label>
   );
 }

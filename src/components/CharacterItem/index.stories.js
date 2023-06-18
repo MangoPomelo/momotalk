@@ -1,10 +1,10 @@
-import { Character } from '.';
+import { CharacterItem } from '.';
 import { CharacterData } from '../../classes/characterData';
 import { millennium } from '../../assets/schoolLogos';
 
 export default {
-  title: 'Components/Character',
-  component: Character,
+  title: 'Components/CharacterItem',
+  component: CharacterItem,
   tags: ['autodocs'],
 };
 

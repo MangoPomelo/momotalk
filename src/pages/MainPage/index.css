@@ -13,7 +13,7 @@
   grid-column-end: -1;
 }
 
-.character__school-icon {
+.character-item__school-icon {
   filter: brightness(15%) sepia(100) saturate(100%) hue-rotate(180deg);
 }
 
