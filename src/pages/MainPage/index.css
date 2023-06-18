@@ -39,13 +39,13 @@
   }
 
   .main-page .header,
-  .main-page .select-panel,
+  .main-page .list-page,
   .main-page .chat-page {
     width: 100vw;
     box-sizing: border-box;
   }
 
-  .main-page .select-panel,
+  .main-page .list-page,
   .main-page .chat-page {
     scroll-snap-align: center;
   }
@@ -57,7 +57,7 @@
     left: 0;
   }
 
-  .main-page .select-panel {
+  .main-page .list-page {
     grid-column: 1 / 1;
     grid-row: 2 / 3;
   }
