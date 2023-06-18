@@ -1,11 +1,11 @@
-import { Message } from '.';
+import { MessageItem } from '.';
 import { CharacterData } from '../../classes/characterData';
 import { sensei } from '../../assets/avatars';
 import { dummy } from '../../assets/schoolLogos';
 
 export default {
-  title: 'Components/Message',
-  component: Message,
+  title: 'Components/MessageItem',
+  component: MessageItem,
   tags: ['autodocs'],
   args: {
     sender: new CharacterData('sensei', sensei, '', dummy),

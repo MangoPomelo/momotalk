@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
 
-Message.propTypes = {
+MessageItem.propTypes = {
   /**
    * CharacterData of the message sender
    */
@@ -30,32 +30,32 @@ Message.propTypes = {
   fromMe: PropTypes.bool,
 };
 
-Message.defaultProps = {
+MessageItem.defaultProps = {
   primary: false,
   fromMe: false,
 };
 
 /**
- * Message component <br/>
+ * MessageItem component <br/>
  * @param {{
  *  sender: CharacterData,
  *  content: string,
  *  primary: boolean,
  *  fromMe: boolean,
  * }} props Properties <br/>
- * @return {JSX.Element} Message component <br/>
+ * @return {JSX.Element} MessageItem component <br/>
  */
-export function Message({
+export function MessageItem({
   sender,
   content,
   primary,
   fromMe,
 }) {
   return (
-    <li className={['message', primary && 'message--primary', fromMe && 'message--from-me'].join(' ')}>
-      <img className="message__avatar" src={sender.avatar} alt={sender.name}/>
-      <span className="message__name">{sender.name}</span>
-      {content.startsWith('blob:') ? <img className="message__content" src={content} alt="image"/> : <span className="message__content">{content}</span>}
+    <li className={['message-item', primary && 'message-item--primary', fromMe && 'message-item--from-me'].join(' ')}>
+      <img className="message-item__avatar" src={sender.avatar} alt={sender.name}/>
+      <span className="message-item__name">{sender.name}</span>
+      {content.startsWith('blob:') ? <img className="message-item__content" src={content} alt="image"/> : <span className="message-item__content">{content}</span>}
     </li>
   );
 }

@@ -3,7 +3,7 @@ import './index.css';
 import PropTypes from 'prop-types';
 import { InputPanel } from '../../components/InputPanel';
 import { MessageList } from '../../components/MessageList';
-import { Message } from '../../components/Message';
+import { MessageItem } from '../../components/MessageItem';
 
 ChatPage.propTypes = {
   /**
@@ -43,7 +43,7 @@ export function ChatPage({ candidates }) {
             .map(([msg, sender], idx) => [msg, sender, senderList[idx - 1] ?? null])
             .map(([msg, sender, previousSender]) => [msg, sender, isPrimarySender(sender, previousSender)])
             .map(([msg, sender, isPrimary]) => (
-              <Message
+              <MessageItem
                 key={msg.message}
                 sender={sender}
                 content={msg}

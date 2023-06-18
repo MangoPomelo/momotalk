@@ -1,6 +1,6 @@
 import { MessageList } from '.';
 import { CharacterData } from '../../classes/characterData';
-import { Message } from '../Message';
+import { MessageItem } from '../MessageItem';
 import React from 'react';
 import { sensei } from '../../assets/avatars';
 import { dummy, millennium } from '../../assets/schoolLogos';
@@ -16,26 +16,26 @@ export default {
     children: {
       options: ['Message1', 'Message2', 'Message3', 'Message4'],
       mapping: {
-        Message1: <Message
+        Message1: <MessageItem
           key="Message1"
           sender={new CharacterData('sensei', sensei, '', dummy)}
           content='Hello~!'
           primary
           fromMe
         />,
-        Message2: <Message
+        Message2: <MessageItem
           key="Message2"
           sender={new CharacterData('sensei', sensei, '', dummy)}
           content='How are you?'
           fromMe
         />,
-        Message3: <Message
+        Message3: <MessageItem
           key="Message3"
           sender={new CharacterData('alice', 'https://schale.gg/images/student/collection/Student_Portrait_Aris_Collection.webp', 'game development development', millennium)}
           content='Fine, thanks!'
           primary
         />,
-        Message4: <Message
+        Message4: <MessageItem
           key="Message4"
           sender={new CharacterData('alice', 'https://schale.gg/images/student/collection/Student_Portrait_Aris_Collection.webp', 'game development development', millennium)}
           content='How is it going?'

@@ -1,18 +1,18 @@
-.message
-.message__avatar,
-.message
-.message__name {
+.message-item
+.message-item__avatar,
+.message-item
+.message-item__name {
   display: none;
 }
 
-.message--primary
-.message__avatar,
-.message--primary
-.message__name {
+.message-item--primary
+.message-item__avatar,
+.message-item--primary
+.message-item__name {
   display: initial;
 }
 
-.message {
+.message-item {
   display: grid;
   grid-template:
     "avatar name" auto
@@ -22,8 +22,8 @@
   margin-top: 8px;
 }
 
-.message--primary
-.message__avatar {
+.message-item--primary
+.message-item__avatar {
   width: 64px;
   height: 64px;
   border-radius: 50%;
@@ -31,16 +31,16 @@
   grid-area: avatar;
 }
 
-.message--primary
-.message__name {
+.message-item--primary
+.message-item__name {
   font-size: 20px;
   font-weight: bold;
   text-transform: capitalize;
   grid-area: name;
 }
 
-.message
-span.message__content {
+.message-item
+span.message-item__content {
   position: relative;
   font-size: 20px;
   line-height: 24px;
@@ -53,8 +53,8 @@ span.message__content {
   grid-area: content;
 }
 
-.message--primary
-.message__content::before {
+.message-item--primary
+.message-item__content::before {
   content: "";
   position: absolute;
   top: 10px;
@@ -66,7 +66,7 @@ span.message__content {
   border-color: transparent rgb(76, 91, 112) transparent transparent;
 }
 
-.message.message--from-me {
+.message-item.message-item--from-me {
   grid-template:
     "name" auto
     "content" auto
@@ -74,28 +74,28 @@ span.message__content {
   justify-items: flex-end;
 }
 
-.message.message--from-me
-.message__avatar,
-.message.message--from-me
-.message__name {
+.message-item.message-item--from-me
+.message-item__avatar,
+.message-item.message-item--from-me
+.message-item__name {
   display: none;
 }
 
-.message--from-me
-span.message__content {
+.message-item--from-me
+span.message-item__content {
   background-color: rgb(74, 138, 202);
 }
 
-.message--from-me
-.message__content::before {
+.message-item--from-me
+.message-item__content::before {
   left: auto;
   right: -5px;
   border-width: 5px 0px 5px 5px;
   border-color: transparent transparent transparent rgb(74, 138, 202);
 }
 
-.message
-img.message__content {
+.message-item
+img.message-item__content {
   max-width: 75%;
   background-color: rgb(255, 255, 255);
   border: 1px solid rgb(231, 235, 236);
@@ -104,7 +104,7 @@ img.message__content {
   grid-area: content;
 }
 
-.message
-img.message__content::before {
+.message-item
+img.message-item__content::before {
   display: none;
 }
