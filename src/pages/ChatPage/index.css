@@ -11,7 +11,7 @@
 }
 
 .chat-page .message-list {
-  flex-grow: 1;
+  margin-bottom: auto;
 }
 
 .chat-page .input-panel {
