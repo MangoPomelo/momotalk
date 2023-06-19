@@ -1,12 +1,16 @@
 .list-page {
   display: flex;
   flex-direction: column;
+  overflow-y: hidden;
+}
+
+.list-page .select-panel {
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
 
-.list-page::-webkit-scrollbar {
+.list-page .select-panel::-webkit-scrollbar {
   display: none;
 }
 
