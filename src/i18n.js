@@ -14,7 +14,7 @@ i18n
         escapeValue: false, // not needed for react as it escapes by default
       },
       backend: {
-        loadPath: 'https://raw.githubusercontent.com/lonqie/SchaleDB/main/data/{{lng}}/{{ns}}.min.json',
+        loadPath: 'https://schale.gg/data/{{lng}}/{{ns}}.min.json',
         parse: (data, language, namespace) => {
           if (namespace === 'students') {
             return parseStudents(data);
