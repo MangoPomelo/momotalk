@@ -43,7 +43,7 @@ SearchPanel.defaultProps = {
 * @return {JSX.Element} SearchPanel component <br/>
 */
 export function SearchPanel({ characters, onSubmit }) {
-  const { t } = useTranslation();
+  const stringify = useStringify();
 
   const submitButtonRef = useRef(null);
 
@@ -56,17 +56,13 @@ export function SearchPanel({ characters, onSubmit }) {
   const onFormSubmit = useCallback((evt) => {
     evt.preventDefault();
 
-    const compressedInfoList = characters
-        .map((c) => {
-          const translatedName = t(c.name, { ns: 'students' });
-          const translatedClub = t(c.club, { ns: 'localization' });
-          return translatedName + translatedClub;
-        })
-        .map((str) => str.toLowerCase());
-    const maskArray = compressedInfoList.map((x) => x.includes(keyword.toLowerCase()));
+    const maskArray = characters
+        .map(stringify)
+        .map((str) => str.toLowerCase())
+        .map((x) => x.includes(keyword.toLowerCase()));
 
     onSubmit(evt, maskArray);
-  }, [characters, keyword, t]);
+  }, [characters, keyword, stringify]);
 
   const onClear = useCallback((evt) => {
     setKeyword('');
@@ -74,7 +70,7 @@ export function SearchPanel({ characters, onSubmit }) {
 
   useUpdateEffect(() => {
     submitButtonRef.current.click();
-  }, [keyword, t]);
+  }, [keyword, stringify]);
 
   return (
     <form className="search-panel" onSubmit={onFormSubmit}>
@@ -83,4 +79,27 @@ export function SearchPanel({ characters, onSubmit }) {
       <input className="search-panel__submit" type="submit" value="submit" ref={submitButtonRef} />
     </form>
   );
+}
+
+/**
+ * Stringify a character
+ * @function stringify
+ * @param {CharacterData} character Character who should be stringified
+ * @return {string} Stringified character
+ */
+
+/**
+ * Stringify character data
+ * @return {stringify} Stringified character
+ */
+function useStringify() {
+  const { t } = useTranslation();
+
+  const stringify = useCallback((character) => {
+    const translatedName = t(character.name, { ns: 'students' });
+    const translatedClub = t(character.club, { ns: 'localization' });
+    return translatedName + translatedClub;
+  }, [t]);
+
+  return stringify;
 }
