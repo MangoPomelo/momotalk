@@ -41,7 +41,7 @@ export function MainPage() {
 
   const onExport = useCallback(async (event) => {
     const messageListDom = document.querySelector('.message-list');
-    const dataUrl = await toPng(messageListDom);
+    const dataUrl = await toPng(messageListDom, { backgroundColor: 'rgb(255, 247, 225)' });
     download(dataUrl, 'screenshot.png');
   });
 
