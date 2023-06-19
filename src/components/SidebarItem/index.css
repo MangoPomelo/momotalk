@@ -8,4 +8,9 @@
   background-position: center;
   color: transparent;
   border: none;
+  transition: transform 50ms ease 0s;
+}
+
+.sidebar__item:active {
+  transform: scale(0.95);
 }
