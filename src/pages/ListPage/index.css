@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   overflow-y: hidden;
+  background-color: rgb(243, 247, 248);
 }
 
 .list-page .select-panel {
