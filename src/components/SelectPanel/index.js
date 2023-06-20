@@ -68,7 +68,7 @@ export function SelectPanel({ characters, onSubmit }) {
   return (
     <form className="select-panel" onSubmit={onFormSubmit}>
       <CharacterList>
-        {characters.map((c, idx) => <CharacterRadio key={c.id} character={c} checked={selectedCharacter.id === c.id} onChange={onChange} />)}
+        {characters.map((c, idx) => <CharacterRadio key={c.id} character={c} checked={CharacterData.areEqual(selectedCharacter, c)} onChange={onChange} />)}
       </CharacterList>
       <input className="select-panel__submit" type="submit" value="submit" ref={submitButtonRef} />
     </form>

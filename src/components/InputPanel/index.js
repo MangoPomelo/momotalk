@@ -94,7 +94,7 @@ export function InputPanel({ character, onSubmit }) {
   }, [textMessage, imageMessage, selectedCharacter]);
 
   useEffect(() => {
-    const isIdenticalCharacter = character.id === selectedCharacter.id;
+    const isIdenticalCharacter = CharacterData.areEqual(character, selectedCharacter);
 
     // If the new comer is identical with the selected character, then there is no need to reset the selected character
     if (isIdenticalCharacter) {
@@ -114,8 +114,8 @@ export function InputPanel({ character, onSubmit }) {
       <input className="input-panel__image-upload" onChange={onInputImageChange} ref={imageUploadButtonRef} type="file" name="image-message" accept="image/*"/>
       <input className="input-panel__input" placeholder="Aa" type="text" id="inputPanel" name="message" value={textMessage} onChange={onInputTextChange} />
       <input className="input-panel__submit" type="submit" value="submit" disabled={textMessage.length <= 0 && imageMessage.length <= 0} ref={submitButtonRef} />
-      <Candidate key={character.name} character={character} checked={selectedCharacter.id === character.id} onChange={onInputRadioChange}/>
-      <Candidate key={senseiRef.current.name} character={senseiRef.current} checked={selectedCharacter.id === senseiRef.current.id} onChange={onInputRadioChange}/>
+      <Candidate key={character.name} character={character} checked={CharacterData.areEqual(selectedCharacter, character)} onChange={onInputRadioChange}/>
+      <Candidate key={senseiRef.current.name} character={senseiRef.current} checked={CharacterData.areEqual(selectedCharacter, senseiRef.current)} onChange={onInputRadioChange}/>
     </form>
   );
 }
