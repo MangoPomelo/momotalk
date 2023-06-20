@@ -14,9 +14,6 @@ export const NoCandidate = {
 
 export const HasCandidates = {
   args: {
-    candidates: [
-      new CharacterData('yuzu', 'https://schale.gg/images/student/collection/Student_Portrait_Yuzu_Collection.webp', 'game development department', millennium),
-      new CharacterData('alice', 'https://schale.gg/images/student/collection/Student_Portrait_Aris_Collection.webp', 'game development department', millennium),
-    ],
+    character: new CharacterData('yuzu', 'https://schale.gg/images/student/collection/Student_Portrait_Yuzu_Collection.webp', 'game development department', millennium),
   },
 };

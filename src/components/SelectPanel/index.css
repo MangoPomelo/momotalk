@@ -1,8 +1,8 @@
-.wrapped-character__checkbox {
+.character-radio__radio {
   display: none;
 }
 
-.wrapped-character__character {
+.character-radio__character {
   display: block;
   cursor: pointer;
 }

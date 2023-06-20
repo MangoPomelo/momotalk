@@ -1,4 +1,4 @@
-import React, { useCallback, useState, useRef } from 'react';
+import React, { useCallback, useState, useRef, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { useUpdateEffect } from '../../hooks/useUpdateEffect';
@@ -49,20 +49,20 @@ export function SearchPanel({ characters, onSubmit }) {
 
   const [keyword, setKeyword] = useState('');
 
+  const maskArray = useMemo(() => (characters
+      .map(stringify)
+      .map((str) => str.toLowerCase())
+      .map((x) => x.includes(keyword.toLowerCase()))
+  ), [characters, keyword, stringify]);
+
   const onInputTextChange = useCallback((evt) => {
     setKeyword(evt.target.value);
   }, []);
 
   const onFormSubmit = useCallback((evt) => {
     evt.preventDefault();
-
-    const maskArray = characters
-        .map(stringify)
-        .map((str) => str.toLowerCase())
-        .map((x) => x.includes(keyword.toLowerCase()));
-
     onSubmit(evt, maskArray);
-  }, [characters, keyword, stringify]);
+  }, [maskArray]);
 
   const onClear = useCallback((evt) => {
     setKeyword('');
@@ -70,7 +70,7 @@ export function SearchPanel({ characters, onSubmit }) {
 
   useUpdateEffect(() => {
     submitButtonRef.current.click();
-  }, [keyword, stringify]);
+  }, [JSON.stringify(maskArray)]);
 
   return (
     <form className="search-panel" onSubmit={onFormSubmit}>

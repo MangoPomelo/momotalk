@@ -9,15 +9,15 @@ import { dummy } from '../../assets/schoolLogos';
 
 InputPanel.propTypes = {
   /**
-   * The characters that can be selected for chatting
+   * The character chatting with
    */
-  candidates: PropTypes.arrayOf(PropTypes.shape({
+  character: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
     avatar: PropTypes.string,
     club: PropTypes.string,
     schoolIcon: PropTypes.string,
-  })),
+  }),
 
   /**
    * Callback to be called when the form is submitted
@@ -26,7 +26,7 @@ InputPanel.propTypes = {
 };
 
 InputPanel.defaultProps = {
-  candidates: [],
+  character: new CharacterData(),
   onSubmit: () => {},
 };
 
@@ -42,12 +42,12 @@ InputPanel.defaultProps = {
 /**
  * InputPanel component <br/>
  * @param {{
- *  candidates: CharacterData[],
+ *  character: CharacterData,
  *  onSubmit: onSubmit,
  * }} props Properties <br/>
  * @return {JSX.Element} InputPanel component <br/>
  */
-export function InputPanel({ candidates, onSubmit }) {
+export function InputPanel({ character, onSubmit }) {
   const senseiRef = useRef(new CharacterData('sensei', sensei, '', dummy));
   const submitButtonRef = useRef(null);
   const imageUploadButtonRef = useRef(null);
@@ -94,15 +94,15 @@ export function InputPanel({ candidates, onSubmit }) {
   }, [textMessage, imageMessage, selectedCharacter]);
 
   useEffect(() => {
-    const isSelectedIncluded = candidates.some((c) => c.id === selectedCharacter.id);
+    const isIdenticalCharacter = character.id === selectedCharacter.id;
 
-    // If the selected character is included in the candidates, then there is no need to reset the selected character
-    if (isSelectedIncluded) {
+    // If the new comer is identical with the selected character, then there is no need to reset the selected character
+    if (isIdenticalCharacter) {
       return;
     }
 
     setSelectedCharacter(senseiRef.current);
-  }, [candidates]);
+  }, [character]);
 
   useUpdateEffect(() => {
     // Skip first time render otherwise it will submit an empty message
@@ -114,7 +114,7 @@ export function InputPanel({ candidates, onSubmit }) {
       <input className="input-panel__image-upload" onChange={onInputImageChange} ref={imageUploadButtonRef} type="file" name="image-message" accept="image/*"/>
       <input className="input-panel__input" placeholder="Aa" type="text" id="inputPanel" name="message" value={textMessage} onChange={onInputTextChange} />
       <input className="input-panel__submit" type="submit" value="submit" disabled={textMessage.length <= 0 && imageMessage.length <= 0} ref={submitButtonRef} />
-      {candidates.map((c) => <Candidate key={c.name} character={c} checked={selectedCharacter.id === c.id} onChange={onInputRadioChange}/>)}
+      <Candidate key={character.name} character={character} checked={selectedCharacter.id === character.id} onChange={onInputRadioChange}/>
       <Candidate key={senseiRef.current.name} character={senseiRef.current} checked={selectedCharacter.id === senseiRef.current.id} onChange={onInputRadioChange}/>
     </form>
   );
@@ -166,6 +166,10 @@ Candidate.defaultProps = {
 function Candidate({ character, checked, onChange }) {
   const serializedCharacter = JSON.stringify(character);
   const inputId = `inputPanelCandidate${character.id}`;
+
+  if (CharacterData.isNullCharacter(character)) {
+    return null;
+  }
 
   return (
     <label className="input-panel__candidate-avatar" htmlFor={inputId}>

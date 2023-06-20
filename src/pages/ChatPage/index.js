@@ -4,29 +4,30 @@ import PropTypes from 'prop-types';
 import { InputPanel } from '../../components/InputPanel';
 import { MessageList } from '../../components/MessageList';
 import { MessageItem } from '../../components/MessageItem';
+import { CharacterData } from '../../classes/characterData';
 
 ChatPage.propTypes = {
   /**
-   * Characters who are candidates for chatting
+   * Character who is chatting with
    */
-  candidates: PropTypes.arrayOf(PropTypes.shape({
+  character: PropTypes.shape({
     id: PropTypes.string,
     name: PropTypes.string,
     avatar: PropTypes.string,
     club: PropTypes.string,
     schoolIcon: PropTypes.string,
-  })),
+  }),
 };
 
 ChatPage.defaultProps = {
-  candidates: [],
+  character: new CharacterData(),
 };
 
 /**
  * ChatPage component <br/>
  * @return {JSX.Element} ChatPage component <br/>
  */
-export function ChatPage({ candidates }) {
+export function ChatPage({ character }) {
   const [messageList, setMessageList] = useState([]);
   const [senderList, setSenderList] = useState([]);
 
@@ -53,7 +54,7 @@ export function ChatPage({ candidates }) {
             ))
         }
       </MessageList>
-      <InputPanel onSubmit={onSubmit} candidates={candidates} />
+      <InputPanel onSubmit={onSubmit} character={character} />
     </article>
   );
 }
