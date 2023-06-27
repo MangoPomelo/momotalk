@@ -1,17 +1,17 @@
 .chat-page {
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
   display: flex;
   flex-direction: column;
 }
 
-.chat-page::-webkit-scrollbar {
-  display: none;
+.chat-page .message-list {
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  margin-bottom: auto;
 }
 
-.chat-page .message-list {
-  margin-bottom: auto;
+.chat-page .message-list::-webkit-scrollbar {
+  display: none;
 }
 
 .chat-page .input-panel {
