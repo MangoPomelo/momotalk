@@ -19,6 +19,7 @@ export function MainPage() {
   const { i18n } = useTranslation();
 
   const characterServiceRef = useRef(new CharacterService(i18n.language));
+  const selfDomRef = useRef(null);
 
   const [loadedCharacters, setLoadedCharacters] = useState([]);
   const [selectedCharacter, setSelectedCharacter] = useState(new CharacterData());
@@ -35,6 +36,18 @@ export function MainPage() {
   useUpdateEffect(() => {
     i18n.changeLanguage(currentLanguage);
   }, [currentLanguage]);
+
+  // For mobile view, swipe right when selected character changed
+  useUpdateEffect(() => {
+    if (selfDomRef == null) {
+      return;
+    }
+
+    const selfDom = selfDomRef.current;
+    const newScrollLeft = selfDom.getBoundingClientRect().width;
+
+    selfDom.scrollTo({ left: newScrollLeft, behavior: 'smooth' });
+  }, [JSON.stringify(selectedCharacter)]);
 
   const onSubmit = useCallback((event, selected) => {
     setSelectedCharacter(selected);
@@ -54,7 +67,7 @@ export function MainPage() {
   }, [currentLanguage]);
 
   return (
-    <main className="main-page">
+    <main className="main-page" ref={selfDomRef}>
       <Header title="momoTalk" onHelpClick={() => void open('https://github.com/MangoPomelo/momotalk')}/>
       <Sidebar>
         <SidebarItem title="export" onClick={onExport} icon='data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="32" height="32"><path d="M22 12V8h20v4zm0 8h20v-4H22zm20 14V24H22v10H10l22 22 22-22z" fill="%23FFFFFF"/></svg>' />
