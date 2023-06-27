@@ -34,11 +34,11 @@ export function CharacterItem({
   };
 
   return (
-    <section className="character-item">
+    <li className="character-item">
       <Avatar character={character}/>
       <span className="character-item__name">{name}</span>
       <span className="character-item__club">{club}</span>
       <img className="character-item__school-icon" src={character.schoolIcon} alt={'school icon'} />
-    </section>
+    </li>
   );
 }
