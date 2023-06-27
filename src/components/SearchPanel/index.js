@@ -75,7 +75,7 @@ export function SearchPanel({ characters, onSubmit }) {
   return (
     <form className="search-panel" onSubmit={onFormSubmit}>
       <input className="search-panel__input" type="text" id="searchPanel" name="message" value={keyword} onChange={onInputTextChange} />
-      <button className="search-panel__clear" onClick={onClear} >clear</button>
+      <button className="search-panel__clear" type="button" onClick={onClear} >clear</button>
       <input className="search-panel__submit" type="submit" value="submit" ref={submitButtonRef} />
     </form>
   );
