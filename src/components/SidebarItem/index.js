@@ -23,7 +23,6 @@ SidebarItem.defaultProps = {
   onClick: () => {},
 };
 
-
 /**
  * @callback onClick
  * @param {Event} event Event sent when the item is clicked

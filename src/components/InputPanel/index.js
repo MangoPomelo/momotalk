@@ -38,7 +38,6 @@ InputPanel.defaultProps = {
  * @param {string} sender The name of the sender
  */
 
-
 /**
  * InputPanel component <br/>
  * @param {{
