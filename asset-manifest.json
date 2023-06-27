@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/momotalk/static/css/main.78287798.css",
-    "main.js": "/momotalk/static/js/main.75d9a7e1.js",
+    "main.js": "/momotalk/static/js/main.d709d86a.js",
     "index.html": "/momotalk/index.html",
     "static/media/getFetch.cjs": "/momotalk/static/media/getFetch.40f37ddea2378391108f.cjs",
     "main.78287798.css.map": "/momotalk/static/css/main.78287798.css.map",
-    "main.75d9a7e1.js.map": "/momotalk/static/js/main.75d9a7e1.js.map"
+    "main.d709d86a.js.map": "/momotalk/static/js/main.d709d86a.js.map"
   },
   "entrypoints": [
     "static/css/main.78287798.css",
-    "static/js/main.75d9a7e1.js"
+    "static/js/main.d709d86a.js"
   ]
 }
