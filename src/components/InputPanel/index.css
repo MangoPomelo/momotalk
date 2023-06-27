@@ -82,14 +82,9 @@
 }
 
 .input-panel__candidate-avatar {
-  display: block;
-  cursor: pointer;
-}
-
-.input-panel__candidate-avatar:has(> .input-panel__candidate-radio:not(:checked)) {
-  display: inline-block;
   position: relative;
-  line-height: 1;
+  line-height: 0;
+  cursor: pointer;
 }
 
 .input-panel__candidate-avatar:has(> .input-panel__candidate-radio:not(:checked))::before{
