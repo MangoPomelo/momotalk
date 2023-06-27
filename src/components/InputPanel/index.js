@@ -100,7 +100,13 @@ export function InputPanel({ character, onSubmit }) {
       return;
     }
 
-    setSelectedCharacter(senseiRef.current);
+    // If current character is sensei then the selected character should be kept
+    if (CharacterData.areEqual(selectedCharacter, senseiRef.current)) {
+      return;
+    }
+
+    // Otherwise select the incoming character
+    setSelectedCharacter(character);
   }, [character]);
 
   useUpdateEffect(() => {
