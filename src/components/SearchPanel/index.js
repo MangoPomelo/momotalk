@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useTranslation } from 'react-i18next';
 import { useUpdateEffect } from '../../hooks/useUpdateEffect';
 import './index.css';
+import { useDebounce } from '../../hooks/useDebounce';
 
 SearchPanel.propTypes = {
   /**
@@ -48,12 +49,13 @@ export function SearchPanel({ characters, onSubmit }) {
   const submitButtonRef = useRef(null);
 
   const [keyword, setKeyword] = useState('');
+  const debouncedKeyword = useDebounce(keyword, 350);
 
   const maskArray = useMemo(() => (characters
       .map(stringify)
       .map((str) => str.toLowerCase())
-      .map((x) => x.includes(keyword.toLowerCase()))
-  ), [characters, keyword, stringify]);
+      .map((x) => x.includes(debouncedKeyword.toLowerCase()))
+  ), [characters, debouncedKeyword, stringify]);
 
   const onInputTextChange = useCallback((evt) => {
     setKeyword(evt.target.value);
