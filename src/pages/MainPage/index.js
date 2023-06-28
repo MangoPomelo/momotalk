@@ -37,21 +37,12 @@ export function MainPage() {
     i18n.changeLanguage(currentLanguage);
   }, [currentLanguage]);
 
-  // For mobile view, swipe right when selected character changed
-  useUpdateEffect(() => {
-    if (selfDomRef == null) {
-      return;
-    }
-
-    const selfDom = selfDomRef.current;
-    const newScrollLeft = selfDom.getBoundingClientRect().width;
-
-    selfDom.scrollTo({ left: newScrollLeft, behavior: 'smooth' });
-  }, [JSON.stringify(selectedCharacter)]);
-
   const onSubmit = useCallback((event, selected) => {
     setSelectedCharacter(selected);
-  });
+
+    // For mobile view, swipe right when selected character is given
+    swipeRight(selfDomRef.current);
+  }, []);
 
   const onExport = useCallback(async (event) => {
     const messageListDom = document.querySelector('.message-list');
@@ -89,4 +80,14 @@ function download(dataUrl, filename) {
   link.href = dataUrl;
   link.download = filename;
   link.click();
+}
+
+/**
+ * Swipe right to chat page
+ * @param {HTMLElement} mainDom The main DOM element which should scroll
+ */
+function swipeRight(mainDom) {
+  const newScrollLeft = mainDom.getBoundingClientRect().width;
+
+  mainDom.scrollTo({ left: newScrollLeft, behavior: 'smooth' });
 }
