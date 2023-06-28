@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useRef, useState } from 'react';
 import PropTypes from 'prop-types';
 import './index.css';
 import { CharacterData } from '../../classes/characterData';
@@ -92,7 +92,7 @@ export function InputPanel({ character, onSubmit }) {
     }
   }, [textMessage, imageMessage, selectedCharacter]);
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     const isIdenticalCharacter = CharacterData.areEqual(character, selectedCharacter);
 
     // If the new comer is identical with the selected character, then there is no need to reset the selected character
@@ -107,7 +107,7 @@ export function InputPanel({ character, onSubmit }) {
 
     // Otherwise select the incoming character
     setSelectedCharacter(character);
-  }, [character]);
+  }, [JSON.stringify(character)]);
 
   useUpdateEffect(() => {
     // Skip first time render otherwise it will submit an empty message

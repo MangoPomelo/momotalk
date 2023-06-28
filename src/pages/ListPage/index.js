@@ -1,8 +1,9 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import PropTypes from 'prop-types';
 import { SearchPanel } from '../../components/SearchPanel';
 import { SelectPanel } from '../../components/SelectPanel';
 import './index.css';
+import { useUpdateEffect } from '../../hooks/useUpdateEffect';
 
 ListPage.propTypes = {
   /**
@@ -49,9 +50,9 @@ export function ListPage({ characters, onSubmit }) {
     setMaskArray(maskArray);
   }, []);
 
-  useEffect(() => {
+  useUpdateEffect(() => {
     setMaskArray(characters.map(() => true));
-  }, [characters]);
+  }, [JSON.stringify(characters)]);
 
   return (
     <article className="list-page">
